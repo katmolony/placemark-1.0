@@ -40,8 +40,8 @@ export const accountsController = {
     },
   },
   logout: {
-    auth: false,
     handler: function (request, h) {
+      request.cookieAuth.clear();
       return h.redirect("/");
     },
   },
@@ -51,6 +51,6 @@ export const accountsController = {
     if (!user) {
       return { isValid: false };
     }
-    return {isValid: true, credentials: user };
+    return { isValid: true, credentials: user };
   },
 };

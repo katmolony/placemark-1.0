@@ -23,4 +23,12 @@ export const locationController = {
       return h.redirect(`/location/${location._id}`);
     },
   },
+
+  deleteBusiness: {
+    handler: async function(request, h) {
+      const location = await db.locationStore.getLocationById(request.params.id);
+      await db.businessStore.deleteBusiness(request.params.businessid);
+      return h.redirect(`/location/${location._id}`);
+    },
+  },
 };

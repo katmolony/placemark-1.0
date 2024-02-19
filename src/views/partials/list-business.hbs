@@ -7,14 +7,19 @@
   </thead>
   <tbody>
     {{#each location.businesss}}
-      <tr>
-        <td>
-          {{name}}
-        </td>
-        <td>
-          {{category}}
-        </td>
-      </tr>
+    <tr>
+      <td>
+        {{name}}
+      </td>
+      <td>
+        {{category}}
+      </td>
+      <td>
+        <a href="/playlist/{{../playlist._id}}/deletetrack/{{_id}}" class="ui icon button">
+          <i class="fas fa-trash"></i>
+        </a>
+      </td>
+    </tr>
     {{/each}}
   </tbody>
 </table>

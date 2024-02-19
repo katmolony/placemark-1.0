@@ -7,6 +7,13 @@ import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import Cookie from "@hapi/cookie";
 import { accountsController } from "./controllers/accounts-controller.js";
+import dotenv from "dotenv";
+
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,8 +27,8 @@ async function init() {
   await server.register(Cookie);
   server.auth.strategy("session", "cookie", {
     cookie: {
-      name: "placemark",
-      password: "secretpasswordnotrevealedtoanyone",
+      name: process.env.COOKIE_NAME,
+      password: process.env.COOKIE_PASSWORD,
       isSecure: false,
     },
     redirectTo: "/",
