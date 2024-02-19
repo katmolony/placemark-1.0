@@ -20,6 +20,10 @@ export const locationMemStore = {
     return list;
   },
 
+  async getUserLocations(userid) {
+    return locations.filter((location) => location.userid === userid);
+  },
+
   async deleteLocationById(id) {
     const index = locations.findIndex((location) => location._id === id);
     locations.splice(index, 1);
