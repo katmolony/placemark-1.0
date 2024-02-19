@@ -7,4 +7,11 @@ export const aboutController = {
         return h.view("about-view", viewData);
       },
     },
+    async validate(request, session) {
+      const user = await db.userStore.getUserById(session.id);
+      if (!user) {
+        return { isValid: false };
+      }
+      return { isValid: true, credentials: user };
+    },
   };
