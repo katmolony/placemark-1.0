@@ -6,6 +6,20 @@
       "email": "homer@simpson.com",
       "password": "secret",
       "_id": "66d9cc51-9687-457c-a9b7-2eda0bac25f9"
+    },
+    {
+      "firstName": "Maggie",
+      "lastName": "Simpson",
+      "email": "maggie@simpson.com",
+      "password": "secret",
+      "_id": "f7ecc608-0748-4cfa-bf4e-4e0f78311788"
+    },
+    {
+      "firstName": "Maggie",
+      "lastName": "Simpson",
+      "email": "maggie@simpson.com",
+      "password": "secret",
+      "_id": "3f699969-e853-4845-9d2c-cf9434e71565"
     }
   ],
   "locations": [
