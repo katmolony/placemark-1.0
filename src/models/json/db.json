@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret",
+      "_id": "66d9cc51-9687-457c-a9b7-2eda0bac25f9"
+    }
+  ],
+  "locations": [
+    {
+      "userid": "66d9cc51-9687-457c-a9b7-2eda0bac25f9",
+      "title": "Italy",
+      "_id": "b42ddc40-5bad-4813-9a30-489ed7c13e30"
+    }
+  ],
+  "businesss": [
+    {
+      "title": "Demo",
+      "duration": null,
+      "_id": "bebccadf-4c20-4e6d-b23e-58c358e0eda2",
+      "locationid": "b42ddc40-5bad-4813-9a30-489ed7c13e30"
+    },
+    {
+      "title": "Demo 2",
+      "category": "Shop",
+      "_id": "8711c0fb-7ac0-43b9-a7f2-ae9cd62e6fb9",
+      "locationid": "b42ddc40-5bad-4813-9a30-489ed7c13e30"
+    }
+  ]
+}

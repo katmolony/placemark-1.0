@@ -1,7 +1,7 @@
 <table class="table is-fullwidth">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Title</th>
       <th>Category</th>
     </tr>
   </thead>
@@ -9,13 +9,13 @@
     {{#each location.businesss}}
     <tr>
       <td>
-        {{name}}
+        {{title}}
       </td>
       <td>
         {{category}}
       </td>
       <td>
-        <a href="/playlist/{{../playlist._id}}/deletetrack/{{_id}}" class="ui icon button">
+        <a href="/location/{{../location._id}}/deletebusiness/{{_id}}" class="ui icon button">
           <i class="fas fa-trash"></i>
         </a>
       </td>
