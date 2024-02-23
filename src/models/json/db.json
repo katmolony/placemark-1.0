@@ -5,21 +5,21 @@
       "lastName": "Simpson",
       "email": "homer@simpson.com",
       "password": "secret",
-      "_id": "66d9cc51-9687-457c-a9b7-2eda0bac25f9"
+      "_id": "cd3bc1a0-b2d5-41f9-a05d-f3af5aa3f09e"
     },
     {
-      "firstName": "Maggie",
+      "firstName": "Marge",
       "lastName": "Simpson",
-      "email": "maggie@simpson.com",
+      "email": "marge@simpson.com",
       "password": "secret",
-      "_id": "f7ecc608-0748-4cfa-bf4e-4e0f78311788"
+      "_id": "1ad0acaf-aaf4-4755-91a9-9e7a68884820"
     },
     {
-      "firstName": "Maggie",
+      "firstName": "Bart",
       "lastName": "Simpson",
-      "email": "maggie@simpson.com",
+      "email": "bart@simpson.com",
       "password": "secret",
-      "_id": "3f699969-e853-4845-9d2c-cf9434e71565"
+      "_id": "94afb98d-0587-4f91-970f-3a8047a95a1b"
     }
   ],
   "locations": [
