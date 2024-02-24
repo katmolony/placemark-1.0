@@ -25,4 +25,20 @@ export const maggie = {
       password: "secret",
     },
   ];
+
+  export const greece = {
+    title: "Greece"
+  };
+  
+  export const testLocations = [
+    {
+      title: "Italy"
+    },
+    {
+      title: "Spain"
+    },
+    {
+      title: "Portugal"
+    }
+  ];
   

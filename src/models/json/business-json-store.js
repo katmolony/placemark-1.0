@@ -18,18 +18,35 @@ export const businessJsonStore = {
 
   async getBusinesssByLocationId(id) {
     await db.read();
-    return db.data.businesss.filter((business) => business.locationid === id);
+    let foundBusinesss = db.data.businesss.filter((business) => business.locationid === id);
+    if (!foundBusinesss) {
+      foundBusinesss = null;
+    }
+    return foundBusinesss;
   },
 
   async getBusinessById(id) {
     await db.read();
-    return db.data.businesss.find((business) => business._id === id);
+    let foundBusiness = db.data.businesss.find((business) => business._id === id);
+    if (!foundBusiness) {
+      foundBusiness = null;
+    }
+    return foundBusiness;
+  },
+
+  async getLocationBusinesss(locationId) {
+    await db.read();
+    let foundBusinesss = businesss.filter((business) => business.locationid === locationId);
+    if (!foundBusinesss) {
+      foundBusinesss = null;
+    }
+    return foundBusinesss;
   },
 
   async deleteBusiness(id) {
     await db.read();
     const index = db.data.businesss.findIndex((business) => business._id === id);
-    db.data.businesss.splice(index, 1);
+    if (index !== -1) db.data.businesss.splice(index, 1);
     await db.write();
   },
 

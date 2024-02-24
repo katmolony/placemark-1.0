@@ -19,16 +19,24 @@ export const businessMemStore = {
   },
 
   async getBusinessById(id) {
-    return businesss.find((business) => business._id === id);
+    let foundBusiness = businesss.find((business) => business._id === id);
+    if (!foundBusiness) {
+      foundBusiness = null;
+    }
+    return foundBusiness;
   },
 
   async getLocationBusinesss(locationId) {
-    return businesss.filter((business) => business.locationid === locationId);
+    let foundBusinesss = businesss.filter((business) => business.locationid === locationId);
+    if (!foundBusinesss) {
+      foundBusinesss = null;
+    }
+    return foundBusinesss;
   },
 
   async deleteBusiness(id) {
     const index = businesss.findIndex((business) => business._id === id);
-    businesss.splice(index, 1);
+    if (index !== -1) businesss.splice(index, 1);
   },
 
   async deleteAllBusinesss() {
