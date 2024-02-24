@@ -65,3 +65,5 @@ export const testBusinesss = [
     category: "View Point",
   },
 ];
+
+export const serviceUrl = "http://localhost:3000";

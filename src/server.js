@@ -9,6 +9,7 @@ import Cookie from "@hapi/cookie";
 import { accountsController } from "./controllers/accounts-controller.js";
 import dotenv from "dotenv";
 import Joi from "joi";
+import { apiRoutes } from "./api-routes.js";
 
 const result = dotenv.config();
 if (result.error) {
@@ -50,6 +51,7 @@ async function init() {
   });
   db.init("mongo");
   server.route(webRoutes);
+  server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
 }
