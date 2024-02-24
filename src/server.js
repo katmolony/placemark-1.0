@@ -10,6 +10,7 @@ import { accountsController } from "./controllers/accounts-controller.js";
 import dotenv from "dotenv";
 import Joi from "joi";
 import { apiRoutes } from "./api-routes.js";
+import Inert from "@hapi/inert";
 
 const result = dotenv.config();
 if (result.error) {
@@ -27,6 +28,7 @@ async function init() {
   });
   await server.register(Vision);
   await server.register(Cookie);
+  await server.register(Inert); // for route to static images
   server.validator(Joi);
   server.auth.strategy("session", "cookie", {
     cookie: {
@@ -50,6 +52,7 @@ async function init() {
     isCached: false,
   });
   db.init("mongo");
+
   server.route(webRoutes);
   server.route(apiRoutes);
   await server.start();
