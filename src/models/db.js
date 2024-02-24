@@ -6,6 +6,9 @@ import { userJsonStore } from "./json/user-json-store.js";
 import { locationJsonStore } from "./json/location-json-store.js";
 import { businessJsonStore } from "./json/business-json-store.js";
 
+import { connectMongo } from "./mongo/connect.js";
+import { userMongoStore } from "./mongo/user-mongo-store.js";
+
 export const db = {
   userStore: null,
   locationStore: null,
@@ -18,10 +21,14 @@ export const db = {
         this.locationStore = locationJsonStore;
         this.businessStore = businessJsonStore;
         break;
+      case "mongo":
+        this.userStore = userMongoStore;
+        connectMongo();
+        break;
       default:
         this.userStore = userMemStore;
         this.locationStore = locationMemStore;
         this.businessStore = businessMemStore;
     }
-  }
+  },
 };
