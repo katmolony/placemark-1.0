@@ -1,4 +1,5 @@
 import Mongoose from "mongoose";
+import { categories } from "../../utils/categories.js";
 
 const { Schema } = Mongoose;
 
