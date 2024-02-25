@@ -1,0 +1,1 @@
+export const categories = ["food and drink", "hotel", "activity"];

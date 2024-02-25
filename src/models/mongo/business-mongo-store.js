@@ -1,9 +1,10 @@
 import { Business } from "./business.js";
+import { categories } from "../../utils/categories.js";
 
 export const businessMongoStore = {
-  async getAllBusinesss() {
-    const businesss = await Business.find().lean();
-    return businesss;
+  async getAllBusinesses() {
+    const businesses = await Business.find().lean();
+    return businesses;
   },
 
   async addBusiness(locationId, business) {
@@ -13,9 +14,9 @@ export const businessMongoStore = {
     return this.getBusinessById(businessObj._id);
   },
 
-  async getBusinesssByLocationId(id) {
-    const businesss = await Business.find({ locationid: id }).lean();
-    return businesss;
+  async getBusinessesByLocationId(id) {
+    const businesses = await Business.find({ locationid: id }).lean();
+    return businesses;
   },
 
   async getBusinessById(id) {
@@ -34,7 +35,7 @@ export const businessMongoStore = {
     }
   },
 
-  async deleteAllBusinesss() {
+  async deleteAllBusinesses() {
     await Business.deleteMany({});
   },
 
