@@ -20,5 +20,6 @@ export const webRoutes = [
   { method: "GET", path: "/dashboard/deletelocation/{id}", config: dashboardController.deleteLocation },
   { method: "GET", path: "/location/{id}/deletebusiness/{businessid}", config: locationController.deleteBusiness },
 
-  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
+  { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
+  
 ];

@@ -3,11 +3,16 @@ import { categories } from "../../utils/categories.js";
 
 const { Schema } = Mongoose;
 
+// Define the categories separately
+const categories = ["Accommodation", "Dining", "Shopping", "Nightlife", "Activities"];
+
+
 const businessSchema = new Schema({
   title: String,
   category: {
     type: String,
-    enum: categories, // Use the predefined list of categories
+    enum: categories,
+    required: true
   },
   locationid: {
     type: Schema.Types.ObjectId,
