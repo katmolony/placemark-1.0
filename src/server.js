@@ -51,6 +51,10 @@ async function init() {
     layout: true,
     isCached: false,
   });
+
+  // // Add utils folder to the server's path
+  // server.path(path.join(__dirname, "utils"));
+
   db.init("mongo");
 
   server.route(webRoutes);
