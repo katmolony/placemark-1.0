@@ -4,7 +4,10 @@ const { Schema } = Mongoose;
 
 const businessSchema = new Schema({
   title: String,
-  category : String,
+  category: {
+    type: String,
+    enum: categories, // Use the predefined list of categories
+  },
   locationid: {
     type: Schema.Types.ObjectId,
     ref: "Location",
