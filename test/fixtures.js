@@ -44,7 +44,7 @@ export const testLocations = [
 
 export const mcdonalds = {
   title: "Mc Donalds Middle Street",
-  category: "Food",
+  category: "Dining",
 };
 
 export const italy = {
@@ -54,15 +54,15 @@ export const italy = {
 export const testBusinesss = [
   {
     title: "Mc Donalds Middle Street",
-    category: "Food",
+    category: "Dining",
   },
   {
     title: "Marriot",
-    category: "Hotel",
+    category: "Accommodation",
   },
   {
     title: "Eagles Peak",
-    category: "View Point",
+    category: "Activities",
   },
 ];
 

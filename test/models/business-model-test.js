@@ -1,33 +1,33 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { testLocations, testBusinesss, italy, greece, mcdonalds, testUsers } from "../fixtures.js";
+import { testLocations, testBusinesss, italy, greece, mcdonalds } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
-suite("Business Model tests", () => {
 
-  let businessList = null;
+suite("Business Model tests", () => {
+  let italyList = null;
 
   setup(async () => {
     db.init("mongo");
     await db.locationStore.deleteAllLocations();
     await db.businessStore.deleteAllBusinesss();
-    businessList = await db.locationStore.addLocation(italy);
+    italyList = await db.locationStore.addLocation(italy);
     for (let i = 0; i < testBusinesss.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      testBusinesss[i] = await db.businessStore.addBusiness(businessList._id, testBusinesss[i]);
+      testBusinesss[i] = await db.businessStore.addBusiness(italyList._id, testBusinesss[i]);
     }
   });
 
   test("create single business", async () => {
     const greeceList = await db.locationStore.addLocation(greece);
-    const business = await db.businessStore.addBusiness(greeceList._id, mcdonalds)
+    const business = await db.businessStore.addBusiness(greeceList._id, mcdonalds);
     assert.isNotNull(business._id);
-    assertSubset (mcdonalds, business);
+    assertSubset(mcdonalds, business);
   });
 
   test("get multiple businesss", async () => {
-    const businesss = await db.businessStore.getBusinesssByLocationId(businessList._id);
-    assert.equal(businesss.length, testBusinesss.length)
+    const businesss = await db.businessStore.getBusinesssByLocationId(italyList._id);
+    assert.equal(businesss.length, testBusinesss.length);
   });
 
   test("delete all businesss", async () => {
@@ -40,9 +40,9 @@ suite("Business Model tests", () => {
 
   test("get a business - success", async () => {
     const greeceList = await db.locationStore.addLocation(greece);
-    const business = await db.businessStore.addBusiness(greeceList._id, mcdonalds)
+    const business = await db.businessStore.addBusiness(greeceList._id, mcdonalds);
     const newBusiness = await db.businessStore.getBusinessById(business._id);
-    assertSubset (mcdonalds, newBusiness);
+    assertSubset(mcdonalds, newBusiness);
   });
 
   test("delete One Business - success", async () => {

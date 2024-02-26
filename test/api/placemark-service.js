@@ -9,6 +9,7 @@ export const placemarkService = {
     const res = await axios.post(`${this.placemarkUrl}/api/users`, user);
     return res.data;
   },
+
   async getUser(id) {
     const res = await axios.get(`${this.placemarkUrl}/api/users/${id}`);
     return res.data;
@@ -21,6 +22,31 @@ export const placemarkService = {
 
   async deleteAllUsers() {
     const res = await axios.delete(`${this.placemarkUrl}/api/users`);
+    return res.data;
+  },
+
+  async createlocation(location) {
+    const res = await axios.post(`${this.placemarkUrl}/api/locations`, location);
+    return res.data;
+  },
+
+  async deleteAllLocations() {
+    const response = await axios.delete(`${this.placemarkUrl}/api/locations`);
+    return response.data;
+  },
+
+  async deleteLocation(id) {
+    const response = await axios.delete(`${this.placemarkUrl}/api/locations/${id}`);
+    return response;
+  },
+
+  async getAllLocations() {
+    const res = await axios.get(`${this.placemarkUrl}/api/locations`);
+    return res.data;
+  },
+
+  async getLocation(id) {
+    const res = await axios.get(`${this.placemarkUrl}/api/locations/${id}`);
     return res.data;
   },
 };
