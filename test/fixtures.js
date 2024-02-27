@@ -28,17 +28,25 @@ export const testUsers = [
 
 export const greece = {
   title: "Greece",
+  lat: 100,
+  lng: 200,
 };
 
 export const testLocations = [
   {
     title: "Italy",
+    lat: 100,
+    lng: 200,
   },
   {
     title: "Spain",
+    lat: 100,
+    lng: 200,
   },
   {
     title: "Portugal",
+    lat: 100,
+    lng: -200,
   },
 ];
 
@@ -49,6 +57,8 @@ export const mcdonalds = {
 
 export const italy = {
   title: "Italy",
+  lat: 100,
+  lng: 200,
 };
 
 export const testBusinesss = [
