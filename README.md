@@ -16,7 +16,8 @@
 
 ![Project Version](public/images/png/versions.png)
 
-1. Version 1: This version hold the most basic design.
+1. Version 1 (level 1): This version hold the most basic design.
+2. Version 2 (level 2): hold all of level 2 features including suggested search, lat, lng from API call, Glitch: .
 
 ### Installation
 
