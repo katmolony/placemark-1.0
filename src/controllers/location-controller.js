@@ -7,8 +7,6 @@ export const locationController = {
       const location = await db.locationStore.getLocationById(request.params.id);
       const viewData = {
         title: "Location",
-        lat: lat,
-        lng: lng,
         location: location,
       };
       return h.view("location-view", viewData);

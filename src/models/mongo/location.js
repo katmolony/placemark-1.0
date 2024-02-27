@@ -4,8 +4,8 @@ const { Schema } = Mongoose;
 
 const locationSchema = new Schema({
   title: String,
-  //lat: Number,
- // lng: Number,
+  lat: Number,
+  lng: Number,
   userid: {
     type: Schema.Types.ObjectId,
     ref: "User",

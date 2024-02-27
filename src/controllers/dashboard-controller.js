@@ -28,8 +28,8 @@ export const dashboardController = {
       const newLocation = {
         userid: loggedInUser._id,
         title: request.payload.title,
-        lat: 8.5,
-        lng: 6.0, //fix
+       // lat: 8.5,
+       // lng: 6.0, //fix
       };
       await db.locationStore.addLocation(newLocation);
       return h.redirect("/dashboard");
