@@ -19,4 +19,6 @@ export const BusinessSpec = {
 
 export const LocationSpec = {
   title: Joi.string().required(),
+  lat: Joi.number().required(),
+  lng: Joi.number().required(),
 };

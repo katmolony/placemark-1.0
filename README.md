@@ -49,3 +49,7 @@ Placemark-1.0 is licensed under the [MIT License](LICENSE).
 ---
 
 This README provides an overview of Placemark-1.0, its features, installation instructions, usage guidelines, contribution guidelines, and licensing information. Feel free to explore the repository and start planning your next holiday with ease!
+
+Refrences: 
+(suggestion search bar)
+https://www.algolia.com/blog/engineering/how-to-implement-autocomplete-with-javascript-on-your-website/
