@@ -1,8 +1,6 @@
 import { db } from "../models/db.js";
 import { LocationSpec } from "../models/joi-schemas.js";
-
-const oneCallRequest = `https://api.openweathermap.org/data/2.5/onecall?lat=52.160858&lon=-7.152420&units=metric&appid=6f31a0fd23d1415ef151dd57611408aa`
-
+import axios from "axios";
 
 export const dashboardController = {
   index: {
@@ -28,30 +26,32 @@ export const dashboardController = {
     },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
+      const city = request.payload.title;
 
-    // const lat = request.payload.lat;
-    // const lng = request.payload.lng;
+      const apiKey = process.env.OPENWEATHER_API_KEY;
 
-    // const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&appid=6f31a0fd23d1415ef151dd57611408aa`
+      const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
-      const newLocation = {
-        userid: loggedInUser._id,
-        title: request.payload.title,
-        // temperature: Number(request.body.temperature),
-       // lat: request.payload.lat,
-      //  lng: request.payload.lng, //fix
-      };
+      try {
+        const response = await axios.get(requestUrl);
+        const { lat, lon } = response.data.coord;
 
-    //   const result = await axios.get(requestUrl);
-    // if (result.status == 200) {
-    //   const reading = result.data.current;
-    //   temp = reading.temp;
-    // }
-      await db.locationStore.addLocation(newLocation);
-      return h.redirect("/dashboard");
+        const newLocation = {
+          userid: loggedInUser._id,
+          title: city,
+          lat: lat,
+          lng: lon, //fix
+        };
+
+        await db.locationStore.addLocation(newLocation);
+        return h.redirect("/dashboard");
+      } catch (error) {
+        console.error("Error getting city data:", error);
+        return h.view("dashboard-view", { title: "Error adding location", error: "Failed to retrieve city data. Please try again." }).takeover().code(500);
+      }
     },
   },
-  
+
   deleteLocation: {
     handler: async function (request, h) {
       const location = await db.locationStore.getLocationById(request.params.id);
