@@ -1,0 +1,32 @@
+{{> menu active="profile"}}
+
+<section class="box">
+<div class="columns">
+  <div class="column is-half">
+    <section class="section">
+  <h1 class="title">Profile Details</h1>
+    <section class="box">
+      <div class="field">
+        <label class="label">First Name</label>
+        <p>{{user.firstName}}</p>
+      </div>
+      <div class="field">
+        <label class="label">Last Name</label>
+        <p>{{user.lastName}}</p>
+      </div>
+      <div class="field">
+        <label class="label">Email</label>
+        <p>{{user.email}}</p>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <p>*****</p>
+      </div>
+    </section>
+  </div>
+
+  {{!-- <div class="column is-half">
+    {{> edit-profile}}
+  </div> --}}
+</div>
+</section>
