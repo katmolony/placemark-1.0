@@ -60,6 +60,16 @@ export const accountsController = {
       return h.redirect("/");
     },
   },
+  profile: {
+      handler: async function (request, h) {
+        const loggedInUser = request.auth.credentials;
+        const viewData = {
+          title: "Placemark Dashboard",
+          user: loggedInUser,
+        };
+        return h.view("profile-view", viewData);
+      },
+  },
 
   async validate(request, session) {
     const user = await db.userStore.getUserById(session.id);
@@ -67,5 +77,10 @@ export const accountsController = {
       return { isValid: false };
     }
     return { isValid: true, credentials: user };
+  },
+
+  async getLoggedInUser(request) {
+    const userEmail = request.cookies.playlist;
+    return await userStore.getUserByEmail(userEmail);
   },
 };
