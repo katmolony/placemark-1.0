@@ -49,10 +49,13 @@ export const testLocations = [
     lng: -200,
   },
 ];
-
+// business
 export const mcdonalds = {
   title: "Mc Donalds Middle Street",
   category: "Dining",
+  lat: 100,
+  lng: 200,
+  postcode: "AXI 111",
 };
 
 export const italy = {
@@ -65,14 +68,23 @@ export const testBusinesss = [
   {
     title: "Mc Donalds Middle Street",
     category: "Dining",
+    lat: 100,
+    lng: 200,
+    postcode: "AXI 111",
   },
   {
     title: "Marriot",
-    category: "Accommodation",
+    category: "Accommodation",  
+    lat: 100,
+    lng: 200,
+    postcode: "AXI 111"
   },
   {
     title: "Eagles Peak",
     category: "Activities",
+    lat: 100,
+    lng: 200,
+    postcode: "AXI 111",
   },
 ];
 
