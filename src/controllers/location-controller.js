@@ -57,11 +57,11 @@ export const locationController = {
           return h.redirect(`/location/${location._id}`);
         } else {
           console.error("Invalid address");
-          return h.redirect(`/location/${location._id}`, { title: "Add Business Error", error: "Invalid address" }).takeover().code(400);
+          return h.view("location-view", { title: "Add Business Error", error: "Invalid address" }).takeover().code(400);
         } 
       } catch (error) {
         console.error("Error fetching coordinates:", error);
-        return h.redirect(`/location/${location._id}`, { title: "Add Business Error", error: "Failed to fetch coordinates" }).takeover().code(500);
+        return h.view("location-view", { title: "Add Business Error", error: "Failed to fetch coordinates" }).takeover().code(500);
       }
     },
   },
