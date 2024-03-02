@@ -74,4 +74,19 @@ export const locationController = {
       return h.redirect(`/location/${location._id}`);
     },
   },
+
+  filterBusinessCategory: {
+    handler: async function (request, h) {
+      const location = await db.locationStore.getLocationById(request.params.id);
+      const category = request.payload.category; //query for get
+      try {
+        const allBusinesss = await db.getBusinesssByLocationId(location);
+        const filteredBusinesses = await allBusinesss.getBusinessByCategory(category);
+        return h.response(filteredBusinesses); // Return the filtered
+      } catch (error) {
+        console.error('Error filtering businesses:', error);
+        return h.response({ error: 'Failed to filter businesses' }).code(500);
+      }
+    }
+  }
 };

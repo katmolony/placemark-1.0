@@ -21,7 +21,12 @@ export const webRoutes = [
   { method: "POST", path: "/location/{id}/addbusiness", config: locationController.addBusiness },
   { method: "GET", path: "/dashboard/deletelocation/{id}", config: dashboardController.deleteLocation },
   { method: "GET", path: "/location/{id}/deletebusiness/{businessid}", config: locationController.deleteBusiness },
-
+  { method: "GET", path: "/location/{id}/filterbusinesscategory/{businessid}", config: locationController.filterBusinessCategory },
+  // { method: 'GET', path: '/location/{id}/searchbusinesscategory',
+  //   config: {
+  //     handler: locationController.searchBusinessCategory, // Make sure the handler references the correct controller method
+  //   }
+  // },
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
   
 ];

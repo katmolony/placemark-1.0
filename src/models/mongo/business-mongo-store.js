@@ -45,4 +45,10 @@ export const businessMongoStore = {
     // add fields
     await businessDoc.save();
   },
+
+  //retrieve business for filtered search
+  async getBusinessByCategory(category) {
+    const businesss = await Business.find({ category: category }).lean();
+    return businesss;
+  },
 };

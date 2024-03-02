@@ -11,6 +11,7 @@ import dotenv from "dotenv";
 import Joi from "joi";
 import { apiRoutes } from "./api-routes.js";
 import Inert from "@hapi/inert";
+import { handlebarsHelpers } from "./views/helpers/handlebars-helper.js";
 
 const result = dotenv.config();
 if (result.error) {
@@ -49,6 +50,7 @@ async function init() {
     layoutPath: "./views/layouts",
     partialsPath: "./views/partials",
     layout: true,
+    helpersPath: "./views/helpers",
     isCached: false,
   });
   db.init("mongo");
