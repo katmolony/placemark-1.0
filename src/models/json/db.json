@@ -1,27 +1,5 @@
 {
-  "users": [
-    {
-      "firstName": "Homer",
-      "lastName": "Simpson",
-      "email": "homer@simpson.com",
-      "password": "secret",
-      "_id": "7094b805-ecdf-44d4-aadf-5d872d61a14d"
-    },
-    {
-      "firstName": "Marge",
-      "lastName": "Simpson",
-      "email": "marge@simpson.com",
-      "password": "secret",
-      "_id": "19790876-6fa7-47be-b811-2633d413cbc5"
-    },
-    {
-      "firstName": "Bart",
-      "lastName": "Simpson",
-      "email": "bart@simpson.com",
-      "password": "secret",
-      "_id": "d095d7e5-ffca-4389-973c-ddb159a91a41"
-    }
-  ],
+  "users": [],
   "locations": [],
   "businesss": [
     {
@@ -30,8 +8,8 @@
       "lat": 100,
       "lng": 200,
       "postcode": "AXI 111",
-      "_id": "b238934e-355f-4b00-96ba-528ff7e2b99c",
-      "locationid": "853f0ff2-7bd3-4619-bce9-ef1927e327d5"
+      "_id": "dc72d5ef-4934-4db0-acdd-d7020f4846be",
+      "locationid": "b2facd7b-7594-4902-b5e2-a34c224a3007"
     },
     {
       "title": "Marriot",
@@ -39,8 +17,8 @@
       "lat": 100,
       "lng": 200,
       "postcode": "AXI 111",
-      "_id": "4f6cddac-81c3-4cff-b947-34a17beab27d",
-      "locationid": "853f0ff2-7bd3-4619-bce9-ef1927e327d5"
+      "_id": "d2e55879-2264-45ab-84f2-fef4fb01ad3a",
+      "locationid": "b2facd7b-7594-4902-b5e2-a34c224a3007"
     },
     {
       "title": "Eagles Peak",
@@ -48,8 +26,8 @@
       "lat": 100,
       "lng": 200,
       "postcode": "AXI 111",
-      "_id": "b1628f13-7c64-4b01-ab84-f548e388d2b0",
-      "locationid": "853f0ff2-7bd3-4619-bce9-ef1927e327d5"
+      "_id": "9f348302-d6a3-4253-9d7b-f15779b172ca",
+      "locationid": "b2facd7b-7594-4902-b5e2-a34c224a3007"
     }
   ]
 }
