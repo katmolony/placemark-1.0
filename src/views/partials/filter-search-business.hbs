@@ -1,0 +1,46 @@
+<input type="text" id="category-input" placeholder="Enter category">
+<button id="filter-button">Filter</button>
+<div class="field">
+        <div class="control">
+          <div class="select">
+            <select name="category">
+              <option value="" selected disabled>Select Category</option>
+              <option value="Accommodation">Accommodation</option>
+              <option value="Dining">Dining</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Nightlife">Nightlife</option>
+              <option value="Activities">Activities</option>
+            </select>
+          </div>
+        </div>
+      </div>
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Address</th>
+      <th>Lat</th>
+      <th>Lng</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each location.businesses}}
+      {{#if (eq category "YourDesiredCategory")}}
+        <tr>
+          <td>{{title}}</td>
+          <td>{{category}}</td>
+          <td>{{address}}</td>
+          <td>{{lat}}</td>
+          <td>{{lng}}</td>
+          <td>
+            {{!-- <a href="/location/{{../location._id}}/deletebusiness/{{_id}}" class="ui icon button">
+              <i class="fas fa-trash"></i> --}}
+            </a>
+          </td>
+        </tr>
+      {{/if}}
+    {{/each}}
+  </tbody>
+</table>
