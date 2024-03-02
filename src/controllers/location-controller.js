@@ -31,11 +31,11 @@ export const locationController = {
   
       // const fullAddress = `${address}, ${city}, ${state}, ${zipcode}, ${country}`;
       const location = await db.locationStore.getLocationById(request.params.id);
-      const postcode = request.payload.postcode;
+      const address = request.payload.address;
   
       const googleApiKey = process.env.GOOGLE_MAP_API;
   
-      const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(postcode)}&key=${googleApiKey}`;
+      const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${googleApiKey}`;
   
       try {
         const response = await axios.get(apiUrl);
@@ -48,18 +48,17 @@ export const locationController = {
           const newBusiness = {
             title: request.payload.title,
             category: request.payload.category,
-            postcode: postcode,
+            address: address,
             lat: lat,
             lng: lng,
           };
-          console.log(response, lat, lng)
+          //console.log(response, lat, lng)
           await db.businessStore.addBusiness(location._id, newBusiness);
           return h.redirect(`/location/${location._id}`);
         } else {
-          console.log(response)
-          console.error("Invalid postcode");
-          return h.redirect(`/location/${location._id}`, { title: "Add Business Error", error: "Invalid postcode" }).takeover().code(400);
-        }
+          console.error("Invalid address");
+          return h.redirect(`/location/${location._id}`, { title: "Add Business Error", error: "Invalid address" }).takeover().code(400);
+        } 
       } catch (error) {
         console.error("Error fetching coordinates:", error);
         return h.redirect(`/location/${location._id}`, { title: "Add Business Error", error: "Failed to fetch coordinates" }).takeover().code(500);

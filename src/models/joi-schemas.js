@@ -15,7 +15,7 @@ export const UserCredentialsSpec = {
 export const BusinessSpec = {
   title: Joi.string().required(),
   category: Joi.string().required(),
-  postcode: Joi.string().required(),
+  address: Joi.string().required(),
 };
 
 export const LocationSpec = {
