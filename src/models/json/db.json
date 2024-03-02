@@ -5,74 +5,51 @@
       "lastName": "Simpson",
       "email": "homer@simpson.com",
       "password": "secret",
-      "_id": "d5e1ded5-2d40-4b40-a622-beab38196c29"
+      "_id": "7094b805-ecdf-44d4-aadf-5d872d61a14d"
     },
     {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
       "password": "secret",
-      "_id": "cd20459e-0e91-48ad-9b65-9d96bf9d50f2"
+      "_id": "19790876-6fa7-47be-b811-2633d413cbc5"
     },
     {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
       "password": "secret",
-      "_id": "3ec1a6dd-f55f-43e5-a7be-397955a764cb"
+      "_id": "d095d7e5-ffca-4389-973c-ddb159a91a41"
     }
   ],
-  "locations": [
-    {
-      "title": "Italy",
-      "_id": "fb4142c1-3f10-46c0-ba08-685733bc1585"
-    },
-    {
-      "title": "Spain",
-      "_id": "5b5239a1-2b03-49e2-aaa4-ac64595280dd"
-    },
-    {
-      "title": "Portugal",
-      "_id": "3071df90-59b6-44f0-9de5-fd7063d17898"
-    },
-    {
-      "userid": "d5e1ded5-2d40-4b40-a622-beab38196c29",
-      "title": "galway",
-      "lat": 53.2719,
-      "lng": -9.0489,
-      "_id": "9b910fbe-bde1-4f28-a5a1-63e9bb3d632d"
-    }
-  ],
+  "locations": [],
   "businesss": [
     {
-      "title": "Demo",
-      "duration": null,
-      "_id": "bebccadf-4c20-4e6d-b23e-58c358e0eda2",
-      "locationid": "b42ddc40-5bad-4813-9a30-489ed7c13e30"
-    },
-    {
-      "title": "Demo 2",
-      "category": "Shop",
-      "_id": "8711c0fb-7ac0-43b9-a7f2-ae9cd62e6fb9",
-      "locationid": "b42ddc40-5bad-4813-9a30-489ed7c13e30"
-    },
-    {
-      "title": "Munch",
+      "title": "Mc Donalds Middle Street",
       "category": "Dining",
-      "address": "salthill, galway",
-      "lat": 53.2625652,
-      "lng": -9.0704274,
-      "_id": "832ed3c6-5523-4b22-8dcc-d2d08e596b3e",
-      "locationid": "3c4a3542-1fe5-49f0-925e-8092178ec955"
+      "lat": 100,
+      "lng": 200,
+      "postcode": "AXI 111",
+      "_id": "b238934e-355f-4b00-96ba-528ff7e2b99c",
+      "locationid": "853f0ff2-7bd3-4619-bce9-ef1927e327d5"
     },
     {
-      "title": "Munch",
-      "category": "Dining",
-      "address": "salthill, galway",
-      "lat": 53.2625652,
-      "lng": -9.0704274,
-      "_id": "b6bc7d66-1606-4b3b-ac20-1fd4213e873e",
-      "locationid": "9b910fbe-bde1-4f28-a5a1-63e9bb3d632d"
+      "title": "Marriot",
+      "category": "Accommodation",
+      "lat": 100,
+      "lng": 200,
+      "postcode": "AXI 111",
+      "_id": "4f6cddac-81c3-4cff-b947-34a17beab27d",
+      "locationid": "853f0ff2-7bd3-4619-bce9-ef1927e327d5"
+    },
+    {
+      "title": "Eagles Peak",
+      "category": "Activities",
+      "lat": 100,
+      "lng": 200,
+      "postcode": "AXI 111",
+      "_id": "b1628f13-7c64-4b01-ab84-f548e388d2b0",
+      "locationid": "853f0ff2-7bd3-4619-bce9-ef1927e327d5"
     }
   ]
 }

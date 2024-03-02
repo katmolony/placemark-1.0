@@ -11,7 +11,15 @@ import dotenv from "dotenv";
 import Joi from "joi";
 import { apiRoutes } from "./api-routes.js";
 import Inert from "@hapi/inert";
+import HapiSwagger from "hapi-swagger";
 import { handlebarsHelpers } from "./views/helpers/handlebars-helper.js";
+
+const swaggerOptions = {
+  info: {
+    title: "Placemark API",
+    version: "0.1",
+  },
+};
 
 const result = dotenv.config();
 if (result.error) {
@@ -30,6 +38,14 @@ async function init() {
   await server.register(Vision);
   await server.register(Cookie);
   await server.register(Inert); // for route to static images
+  await server.register([
+    Inert,
+    Vision,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
   server.validator(Joi);
   server.auth.strategy("session", "cookie", {
     cookie: {
