@@ -1,4 +1,25 @@
 <form class="box" action="/location/{{location._id}}/filterbusinesscategory" method="GET">
+  <label>Select Category:</label>
+  <div class="field">
+    <div class="control">
+      <div class="select">
+        <select name="category" id="category-select">
+          <option value="" selected disabled>Select Category</option>
+          <option value="Accommodation">Accommodation</option>
+          <option value="Dining">Dining</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Nightlife">Nightlife</option>
+          <option value="Activities">Activities</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="button" id="filter-button">Filter</button>
+</form>
+
+
+
+<form class="box" action="/location/{{location._id}}/filterbusinesscategory" method="GET">
   <label>Enter Business Details:</label>
 <div class="field">
   <div class="control">

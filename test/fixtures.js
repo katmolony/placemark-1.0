@@ -52,10 +52,10 @@ export const testLocations = [
 // business
 export const mcdonalds = {
   title: "Mc Donalds Middle Street",
+  address: "123 Ronald Street, New Orleans",
   category: "Dining",
   lat: 100,
   lng: 200,
-  postcode: "AXI 111",
 };
 
 export const italy = {
@@ -68,23 +68,24 @@ export const testBusinesss = [
   {
     title: "Mc Donalds Middle Street",
     category: "Dining",
+    address: "123 Ronald Street, New Orleans",
+    category: "Dining",
     lat: 100,
     lng: 200,
-    postcode: "AXI 111",
   },
   {
     title: "Marriot",
-    category: "Accommodation",  
+    address: "123 Ronald Street, New Orleans",
+    category: "Accommodation",
     lat: 100,
     lng: 200,
-    postcode: "AXI 111"
   },
   {
     title: "Eagles Peak",
+    address: "123 Ronald Street, New Orleans",
     category: "Activities",
     lat: 100,
     lng: 200,
-    postcode: "AXI 111",
   },
 ];
 

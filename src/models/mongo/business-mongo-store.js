@@ -47,8 +47,8 @@ export const businessMongoStore = {
   },
 
   //retrieve business for filtered search
-  async getBusinessByCategory(category) {
-    const businesss = await Business.find({ category: category }).lean();
+  async getBusinessByCategory(category, locationId) {
+    const businesss = await Business.find({ category: category, locationid: locationId}).lean();
     return businesss;
   },
 };

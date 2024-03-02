@@ -69,7 +69,7 @@ async function init() {
     helpersPath: "./views/helpers",
     isCached: false,
   });
-  db.init("json");
+  db.init("mongo");
   // could be mongo
 
   server.route(webRoutes);
