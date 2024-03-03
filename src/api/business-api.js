@@ -6,7 +6,9 @@ import { validationError } from "./logger.js";
 
 export const businessApi = {
   find: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const businesss = await db.businessStore.getAllBusinesss();
@@ -22,7 +24,9 @@ export const businessApi = {
   },
 
   findOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     async handler(request) {
       try {
         const business = await db.businessStore.getBusinessById(request.params.id);
@@ -42,7 +46,9 @@ export const businessApi = {
   },
 
   create: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const business = await db.businessStore.addBusiness(request.params.id, request.payload);
@@ -62,7 +68,9 @@ export const businessApi = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         await db.businessStore.deleteAllBusinesss();
@@ -76,7 +84,9 @@ export const businessApi = {
   },
 
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const business = await db.businessStore.getBusinessById(request.params.id);

@@ -3,7 +3,7 @@ import { assertSubset } from "../test-utils.js";
 import { placemarkService } from "./placemark-service.js";
 import { maggie, greece, testLocations, testBusinesss, mcdonalds } from "../fixtures.js";
 
-// import { maggie, mxozart, testPlaylists, testTracks, cxoncerto } from "../fixtures.js";
+// import { maggie, mxozart, testLocations, testTXracks, cxoncerto } from "../fixtures.js";
 
 
 suite("Business API tests", () => {
@@ -11,10 +11,14 @@ suite("Business API tests", () => {
   let locationList = null; //could be wrong locationList
 
   setup(async () => {
-    await placemarkService.deleteAllLocations();
-    await placemarkService.deleteAllUsers();
-    await placemarkService.deleteAllBusinesss();
+    placemarkService.clearAuth();
     user = await placemarkService.createUser(maggie);
+    await placemarkService.authenticate(maggie);
+    await placemarkService.deleteAllLocations();
+    await placemarkService.deleteAllBusinesss();
+    await placemarkService.deleteAllUsers();
+    user = await placemarkService.createUser(maggie);
+    await placemarkService.authenticate(maggie);
     greece.userid = user._id;
     locationList = await placemarkService.createLocation(greece);
   });

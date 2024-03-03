@@ -39,12 +39,6 @@ export const BusinessSpecPlus = BusinessSpec.keys({
 
 export const BusinessArraySpec = Joi.array().items(BusinessSpecPlus).label("BusinessArray");
 
-// export const LocationSpec = {
-//   title: Joi.string().required(),
-//   // lat: Joi.number().required(),
-//   // lng: Joi.number().required(),
-// };
-
 export const LocationSpec = Joi.object()
   .keys({
     title: Joi.string().required().example("Italy"),

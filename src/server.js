@@ -1,25 +1,22 @@
-import Hapi from "@hapi/hapi";
+import Inert from "@hapi/inert";
 import Vision from "@hapi/vision";
-import Handlebars from "handlebars";
+import Hapi from "@hapi/hapi";
+import Cookie from "@hapi/cookie";
+import dotenv from "dotenv";
 import path from "path";
+import Joi from "joi";
+import jwt from "hapi-auth-jwt2";
+import HapiSwagger from "hapi-swagger";
 import { fileURLToPath } from "url";
+import Handlebars from "handlebars";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
-import Cookie from "@hapi/cookie";
 import { accountsController } from "./controllers/accounts-controller.js";
-import dotenv from "dotenv";
-import Joi from "joi";
+import { validate } from "./api/jwt-utils.js";
 import { apiRoutes } from "./api-routes.js";
-import Inert from "@hapi/inert";
-import HapiSwagger from "hapi-swagger";
-import { handlebarsHelpers } from "./views/helpers/handlebars-helper.js";
 
-const swaggerOptions = {
-  info: {
-    title: "Placemark API",
-    version: "0.1",
-  },
-};
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const result = dotenv.config();
 if (result.error) {
@@ -27,17 +24,23 @@ if (result.error) {
   process.exit(1);
 }
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const swaggerOptions = {
+  info: {
+    title: "Playtime API",
+    version: "0.1",
+  },
+};
 
 async function init() {
   const server = Hapi.server({
-    port: 3000,
-    host: "localhost",
+    port: process.env.PORT || 3000,
   });
+
+  await server.register(Inert);
   await server.register(Vision);
   await server.register(Cookie);
-  await server.register(Inert); // for route to static images
+  await server.register(jwt);
+
   await server.register([
     Inert,
     Vision,
@@ -46,17 +49,9 @@ async function init() {
       options: swaggerOptions,
     },
   ]);
+
   server.validator(Joi);
-  server.auth.strategy("session", "cookie", {
-    cookie: {
-      name: process.env.COOKIE_NAME,
-      password: process.env.COOKIE_PASSWORD,
-      isSecure: false,
-    },
-    redirectTo: "/",
-    validate: accountsController.validate,
-  });
-  server.auth.default("session");
+
   server.views({
     engines: {
       hbs: Handlebars,
@@ -66,12 +61,26 @@ async function init() {
     layoutPath: "./views/layouts",
     partialsPath: "./views/partials",
     layout: true,
-    helpersPath: "./views/helpers",
     isCached: false,
   });
-  db.init("mongo");
-  // could be mongo
 
+  server.auth.strategy("session", "cookie", {
+    cookie: {
+      name: process.env.COOKIE_NAME,
+      password: process.env.COOKIE_PASSWORD,
+      isSecure: false,
+    },
+    redirectTo: "/",
+    validate: accountsController.validate,
+  });
+  server.auth.strategy("jwt", "jwt", {
+    key: process.env.COOKIE_PASSWORD,
+    validate: validate,
+    verifyOptions: { algorithms: ["HS256"] },
+  });
+  server.auth.default("session");
+
+  db.init("mongo");
   server.route(webRoutes);
   server.route(apiRoutes);
   await server.start();

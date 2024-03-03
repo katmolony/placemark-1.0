@@ -8,6 +8,8 @@ export const apiRoutes = [
   { method: "DELETE", path: "/api/users", config: userApi.deleteAll },
   { method: "GET", path: "/api/users/{id}", config: userApi.findOne },
 
+  { method: "POST", path: "/api/users/authenticate", config: userApi.authenticate },
+
   { method: "POST", path: "/api/locations", config: locationApi.create },
   { method: "DELETE", path: "/api/locations", config: locationApi.deleteAll },
   { method: "GET", path: "/api/locations", config: locationApi.find },

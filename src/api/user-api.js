@@ -2,9 +2,13 @@ import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { UserSpec, UserSpecPlus, IdSpec, UserArray } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
+import { createToken } from "./jwt-utils.js";
 
 export const userApi = {
   find: {
+    auth: {
+      strategy: "jwt",
+    },
     auth: false,
     handler: async function (request, h) {
       try {
@@ -21,6 +25,9 @@ export const userApi = {
   },
 
   findOne: {
+    auth: {
+      strategy: "jwt",
+    },
     auth: false,
     handler: async function (request, h) {
       try {
@@ -61,7 +68,9 @@ export const userApi = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         await db.userStore.deleteAll();
@@ -72,6 +81,25 @@ export const userApi = {
     },
     tags: ["api"],
     description: "Delete all userApi",
-    notes: "All userApi removed from Placemark",
+    notes: "All userApi removed from Playtime",
+  },
+
+  authenticate: {
+    auth: false,
+    handler: async function (request, h) {
+      try {
+        const user = await db.userStore.getUserByEmail(request.payload.email);
+        if (!user) {
+          return Boom.unauthorized("User not found");
+        }
+        if (user.password !== request.payload.password) {
+          return Boom.unauthorized("Invalid password");
+        }
+        const token = createToken(user);
+        return h.response({ success: true, token: token }).code(201);
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
   },
 };
