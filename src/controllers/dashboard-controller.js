@@ -7,10 +7,13 @@ export const dashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const locations = await db.locationStore.getUserLocations(loggedInUser._id);
+
+      const allLocations = await db.locationStore.getAllLocations();
       const viewData = {
         title: "Placemark Dashboard",
         user: loggedInUser,
         locations: locations,
+        allLocations: allLocations,
       };
       return h.view("dashboard-view", viewData);
     },
@@ -28,6 +31,15 @@ export const dashboardController = {
       const loggedInUser = request.auth.credentials;
       const city = request.payload.title;
 
+      // const oldcity = await db.locationStore.getLocationByCity(city);
+
+      // if (oldcity != null){
+      //   await db.locationStore.addLocation(newLocation);
+      //   return h.redirect("/dashboard");
+      //   break;
+      // }
+
+      // API used to collect coord from city
       const apiKey = process.env.OPENWEATHER_API_KEY;
 
       const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;

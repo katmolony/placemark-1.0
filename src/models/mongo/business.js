@@ -9,6 +9,7 @@ const categories = ["Accommodation", "Dining", "Shopping", "Nightlife", "Activit
 const businessSchema = new Schema({
   title: String,
   address: String,
+  description: String,
   lat: Number,
   lng: Number,
   category: {

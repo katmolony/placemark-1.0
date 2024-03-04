@@ -23,49 +23,38 @@ export const locationController = {
       },
     },
     handler: async function (request, h) {
-      // const address = document.getElementById("address-input").value;
-      // const city = document.getElementById("city-input").value;
-      // const state = document.getElementById("state-input").value;
-      // const zipcode = document.getElementById("zipcode-input").value;
-      // const country = document.getElementById("country-input").value;
-  
-      // const fullAddress = `${address}, ${city}, ${state}, ${zipcode}, ${country}`;
       const location = await db.locationStore.getLocationById(request.params.id);
       const address = request.payload.address;
-  
-      const googleApiKey = process.env.GOOGLE_MAP_API;
-  
-      const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${googleApiKey}`;
-  
+
+      // Nomanti Open street map, no APIkey needed
+      const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+
       try {
         const response = await axios.get(apiUrl);
-        const data = response.data; // Assigning response data to a variable
 
-        if (data.status === "OK" && data.results.length > 0) {
-            const { geometry, formatted_address } = data.results[0];
-            const { lat, lng } = geometry.location;
-  
+        if (response.data.length > 0) {
+          const { lat, lon } = response.data[0];
+
           const newBusiness = {
             title: request.payload.title,
             category: request.payload.category,
+            description: request.payload.description,
             address: address,
             lat: lat,
-            lng: lng,
+            lng: lon, // change for google
           };
-          //console.log(response, lat, lng)
           await db.businessStore.addBusiness(location._id, newBusiness);
           return h.redirect(`/location/${location._id}`);
         } else {
           console.error("Invalid address");
           return h.view("location-view", { title: "Add Business Error", error: "Invalid address" }).takeover().code(400);
-        } 
+        }
       } catch (error) {
         console.error("Error fetching coordinates:", error);
         return h.view("location-view", { title: "Add Business Error", error: "Failed to fetch coordinates" }).takeover().code(500);
       }
     },
   },
-  
 
   deleteBusiness: {
     handler: async function (request, h) {
@@ -97,10 +86,9 @@ export const locationController = {
         const filteredBusinesses = await db.getBusinessByCategoryAndLocation(category, locationId);
         return h.response(filteredBusinesses);
       } catch (error) {
-        console.error('Error filtering businesses:', error);
-        return h.response({ error: 'Failed to filter businesses' }).code(500);
+        console.error("Error filtering businesses:", error);
+        return h.response({ error: "Failed to filter businesses" }).code(500);
       }
-    }
-  }
-
+    },
+  },
 };

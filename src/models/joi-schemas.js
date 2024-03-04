@@ -26,6 +26,7 @@ export const BusinessSpec = Joi.object()
     title: Joi.string().required().example("Munch Box"),
     category: Joi.string().required().example("Dining"),
     address: Joi.string().required().example("12 Fake Street, Wexford"),
+    description: Joi.string().required().example("A lovely fake street, with fake businesses"),
     lat: Joi.number().allow("").optional().example(-3.56),
     lng: Joi.number().allow("").optional().example(35.675),
     locationid: IdSpec,

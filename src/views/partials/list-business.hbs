@@ -1,3 +1,32 @@
+{{#each location.businesss}}
+<div class="box box-link-hover-shadow">
+  <h3 class="title">
+    {{title}}
+  </h3>
+  <h2>
+    {{category}}
+  </h2>
+    <td>
+    {{description}}
+  </td>
+  <td>
+    {{address}}
+  </td>
+  <td>
+    {{lat}}
+  </td>
+  <td>
+    {{lng}}
+  </td>
+  <td>
+  <a href="/location/{{../location._id}}/deletebusiness/{{_id}}" class="ui icon button">
+    <i class="fas fa-trash"></i>
+  </a>
+</td>
+</div>
+
+{{/each}}
+{{!-- 
 <table class="table is-fullwidth">
   <thead>
     <tr>
@@ -34,4 +63,4 @@
     </tr>
     {{/each}}
   </tbody>
-</table>
+</table> --}}
