@@ -6,27 +6,37 @@
   <h2>
     {{category}}
   </h2>
-    <td>
+  <h2>
     {{description}}
-  </td>
-  <td>
+  </h2>
+  <h2>
     {{address}}
-  </td>
-  <td>
+  </h2>
+  <h2>
     {{lat}}
-  </td>
-  <td>
+  </h2>
+  <h2>
     {{lng}}
-  </td>
-  <td>
-  <a href="/location/{{../location._id}}/deletebusiness/{{_id}}" class="ui icon button">
-    <i class="fas fa-trash"></i>
+  </h2>
+  <a href="/business/{{_id}}" class="button">
+    <span class="icon is-small">
+      <i class="fas fa-folder-open"></i>
+    </span>
   </a>
-</td>
+    <a href="/location/{{../location._id}}/deletebusiness/{{_id}}" class="button">
+    <span class="icon is-small">
+      <i class="fas fa-edit"></i>
+    </span>
+  </a>
+  <a href="/location/{{../location._id}}/deletebusiness/{{_id}}" class="button">
+    <span class="icon is-small">
+      <i class="fas fa-trash"></i>
+    </span>
+  </a>
 </div>
 
 {{/each}}
-{{!-- 
+{{!--
 <table class="table is-fullwidth">
   <thead>
     <tr>

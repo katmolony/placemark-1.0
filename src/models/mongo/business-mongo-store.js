@@ -42,6 +42,8 @@ export const businessMongoStore = {
     const businessDoc = await Business.findOne({ _id: business._id });
     businessDoc.title = updatedBusiness.title;
     businessDoc.category = updatedBusiness.category;
+    // businessDoc.address = updatedBusiness.address;
+    businessDoc.description = updatedBusiness.description;
     // add fields
     await businessDoc.save();
   },

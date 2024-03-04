@@ -4,11 +4,11 @@ import { db } from "../models/db.js";
 export const businessController = {
   index: {
     handler: async function (request, h) {
-      const location = await db.locationStore.getLocationById(request.params.id);
-      const business = await db.businessStore.getBusinessById(request.params.businessid);
+      // const location = await db.locationStore.getLocationById(request.params.id);
+      const business = await db.businessStore.getBusinessById(request.params.id);
       const viewData = {
-        title: "Edit Song",
-        location: location,
+        title: "Business View",
+       // location: location,
         business: business,
       };
       return h.view("business-view", viewData);
@@ -27,8 +27,15 @@ export const businessController = {
       const business = await db.businessStore.getBusinessById(request.params.businessid);
       const newBusiness = {
         title: request.payload.title,
-        artist: request.payload.artist,
-        duration: Number(request.payload.duration), //all to be changed 
+        description: request.payload.description,
+        category: request.payload.category, //all to be changed 
+
+  //       title: String,
+  // address: String,
+  // description: String,
+  // lat: Number,
+  // lng: Number,
+  // category: 
       };
       await db.businessStore.updateBusiness(business, newBusiness);
       return h.redirect(`/location/${request.params.id}`);

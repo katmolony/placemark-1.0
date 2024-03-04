@@ -2,6 +2,7 @@ import { accountsController } from "./controllers/accounts-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
 import { locationController } from "./controllers/location-controller.js";
+import { businessController } from "./controllers/business-controller.js";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: accountsController.index },
@@ -27,6 +28,9 @@ export const webRoutes = [
   //     handler: locationController.searchBusinessCategory, // Make sure the handler references the correct controller method
   //   }
   // },
+
+  { method: "GET", path: "/business/{id}", config: businessController.index },
+
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
   
 ];

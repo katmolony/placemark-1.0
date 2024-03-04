@@ -1,0 +1,32 @@
+<section class="section">
+    <h1 class="title">Edit Business Details</h1>
+    <form class="box" action="/profile/updateprofile/{{user._id}}" method="POST">
+        <label class="label"> New Name: </label>
+        <div class="field">
+            <input class="input" type="text" placeholder="Enter Business Name" name="title" value="{{business.title}}">
+        </div>
+        <div class="field">
+            <h3 class="label">Address: {{business.address}}</h3>
+        </div>
+        <label class="label">New Category:</label>
+        <div class="control">
+            <div class="select">
+                <select name="category">
+                    <option value="" selected disabled>Select Category</option>
+                    <option value="Accommodation">Accommodation</option>
+                    <option value="Dining">Dining</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Nightlife">Nightlife</option>
+                    <option value="Activities">Activities</option>
+                </select>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">New Description: </label> <input class="input" type="text"
+                placeholder="Enter New Description" name="description" value="{{business.description}}">
+        </div>
+        <div class="field is-grouped">
+            <button class="button is-primary">Update Details</button>
+        </div>
+    </form>
+</section>
