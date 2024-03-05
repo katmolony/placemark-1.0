@@ -4,11 +4,11 @@ import { db } from "../models/db.js";
 export const businessController = {
   index: {
     handler: async function (request, h) {
-      // const location = await db.locationStore.getLocationById(request.params.id);
+      const location = await db.locationStore.getLocationById(request.params.locationid);
       const business = await db.businessStore.getBusinessById(request.params.id);
       const viewData = {
         title: "Business View",
-       // location: location,
+        location: location,
         business: business,
       };
       return h.view("business-view", viewData);
@@ -24,21 +24,22 @@ export const businessController = {
       },
     },
     handler: async function (request, h) {
+      const locationid = await db.locationStore.getLocationById(request.params.locationid);
       const business = await db.businessStore.getBusinessById(request.params.businessid);
       const newBusiness = {
         title: request.payload.title,
+        category: request.payload.category,
         description: request.payload.description,
-        category: request.payload.category, //all to be changed 
-
-  //       title: String,
-  // address: String,
-  // description: String,
-  // lat: Number,
-  // lng: Number,
-  // category: 
+        address: request.payload.address,
+        // these fields don't change
+       // address: business._address,
+       // lat: business._lat,
+       // lng: business._lng,
+       // locationid: locationid._id
       };
+      console.log(`Updating Reading ${business._id} from Station ${locationid._id}`);
       await db.businessStore.updateBusiness(business, newBusiness);
-      return h.redirect(`/location/${request.params.id}`);
+      return h.redirect(`/location/${locationid._id}/business/${business._id}`);
     },
   },
 };

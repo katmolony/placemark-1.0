@@ -41,7 +41,7 @@ export const locationController = {
             description: request.payload.description,
             address: address,
             lat: lat,
-            lng: lon, // change for google
+            lng: lon, // change for API
           };
           await db.businessStore.addBusiness(location._id, newBusiness);
           return h.redirect(`/location/${location._id}`);

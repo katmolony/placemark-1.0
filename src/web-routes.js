@@ -29,7 +29,8 @@ export const webRoutes = [
   //   }
   // },
 
-  { method: "GET", path: "/business/{id}", config: businessController.index },
+  { method: "GET", path: "/location/{locationid}/business/{id}", config: businessController.index },
+  { method: "POST", path: "/location/{locationid}/updateBusiness/{businessid}", config: businessController.update },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
   

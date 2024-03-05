@@ -1,12 +1,14 @@
 <section class="section">
     <h1 class="title">Edit Business Details</h1>
-    <form class="box" action="/profile/updateprofile/{{user._id}}" method="POST">
+    <form class="box" action="/location/{{location._id}}/updateBusiness/{{business._id}}" method="POST">
         <label class="label"> New Name: </label>
         <div class="field">
             <input class="input" type="text" placeholder="Enter Business Name" name="title" value="{{business.title}}">
         </div>
+        <label class="label">Address: </label>
         <div class="field">
-            <h3 class="label">Address: {{business.address}}</h3>
+            <input class="input input-disabled-background-color" type="text" readonly="readonly" placeholder="{{business.address}}" name="address"
+                value="{{business.address}}">
         </div>
         <label class="label">New Category:</label>
         <div class="control">
