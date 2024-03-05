@@ -67,14 +67,14 @@ export const accountsController = {
     },
   },
   profile: {
-      handler: async function (request, h) {
-        const loggedInUser = request.auth.credentials;
-        const viewData = {
-          title: "Placemark Dashboard",
-          user: loggedInUser,
-        };
-        return h.view("profile-view", viewData);
-      },
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const viewData = {
+        title: "Placemark Dashboard",
+        user: loggedInUser,
+      };
+      return h.view("profile-view", viewData);
+    },
   },
 
   async validate(request, session) {

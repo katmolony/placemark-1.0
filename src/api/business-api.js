@@ -3,29 +3,28 @@ import { db } from "../models/db.js";
 import { IdSpec, BusinessSpec, BusinessSpecPlus, BusinessArraySpec } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 
-
 export const businessApi = {
   find: {
     auth: {
-      strategy: "jwt",
+      strategy: "jwt"
     },
-    handler: async function (request, h) {
+    async handler(request, h) {
       try {
-        const businesss = await db.businessStore.getAllBusinesss();
-        return businesss;
+        const businesses = await db.businessStore.getAllBusinesses();
+        return businesses;
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
     },
     tags: ["api"],
     response: { schema: BusinessArraySpec, failAction: validationError },
-    description: "Get all businessApi",
-    notes: "Returns all businessApi",
+    description: "Get all businesses",
+    notes: "Returns all businesses"
   },
 
   findOne: {
     auth: {
-      strategy: "jwt",
+      strategy: "jwt"
     },
     async handler(request) {
       try {
@@ -42,20 +41,20 @@ export const businessApi = {
     description: "Find a Business",
     notes: "Returns a business",
     validate: { params: { id: IdSpec }, failAction: validationError },
-    response: { schema: BusinessSpecPlus, failAction: validationError },
+    response: { schema: BusinessSpecPlus, failAction: validationError }
   },
 
   create: {
     auth: {
-      strategy: "jwt",
+      strategy: "jwt"
     },
-    handler: async function (request, h) {
+    async handler(request, h) {
       try {
         const business = await db.businessStore.addBusiness(request.params.id, request.payload);
         if (business) {
           return h.response(business).code(201);
         }
-        return Boom.badImplementation("error creating business");
+        return Boom.badImplementation("Error creating business");
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
@@ -64,30 +63,30 @@ export const businessApi = {
     description: "Create a business",
     notes: "Returns the newly created business",
     validate: { payload: BusinessSpec },
-    response: { schema: BusinessSpecPlus, failAction: validationError },
+    response: { schema: BusinessSpecPlus, failAction: validationError }
   },
 
   deleteAll: {
     auth: {
-      strategy: "jwt",
+      strategy: "jwt"
     },
-    handler: async function (request, h) {
+    async handler(request, h) {
       try {
-        await db.businessStore.deleteAllBusinesss();
+        await db.businessStore.deleteAllBusinesses();
         return h.response().code(204);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
       }
     },
     tags: ["api"],
-    description: "Delete all businessApi",
+    description: "Delete all businesses"
   },
 
   deleteOne: {
     auth: {
-      strategy: "jwt",
+      strategy: "jwt"
     },
-    handler: async function (request, h) {
+    async handler(request, h) {
       try {
         const business = await db.businessStore.getBusinessById(request.params.id);
         if (!business) {
@@ -101,6 +100,6 @@ export const businessApi = {
     },
     tags: ["api"],
     description: "Delete a business",
-    validate: { params: { id: IdSpec }, failAction: validationError },
-  },
+    validate: { params: { id: IdSpec }, failAction: validationError }
+  }
 };

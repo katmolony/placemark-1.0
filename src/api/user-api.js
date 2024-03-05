@@ -6,9 +6,6 @@ import { createToken } from "./jwt-utils.js";
 
 export const userApi = {
   find: {
-    auth: {
-      strategy: "jwt",
-    },
     auth: false,
     handler: async function (request, h) {
       try {

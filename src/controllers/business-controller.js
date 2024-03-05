@@ -31,11 +31,6 @@ export const businessController = {
         category: request.payload.category,
         description: request.payload.description,
         address: request.payload.address,
-        // these fields don't change
-       // address: business._address,
-       // lat: business._lat,
-       // lng: business._lng,
-       // locationid: locationid._id
       };
       console.log(`Updating Reading ${business._id} from Station ${locationid._id}`);
       await db.businessStore.updateBusiness(business, newBusiness);

@@ -44,15 +44,6 @@ export const dashboardController = {
       const loggedInUser = request.auth.credentials;
       const city = request.payload.title;
 
-      // const oldcity = await db.locationStore.getLocationByCity(city);
-
-      // if (oldcity != null){
-      //   await db.locationStore.addLocation(newLocation);
-      //   return h.redirect("/dashboard");
-      //   break;
-      // }
-
-      // API used to collect coord from city
       const apiKey = process.env.OPENWEATHER_API_KEY;
 
       const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
@@ -65,7 +56,7 @@ export const dashboardController = {
           userid: loggedInUser._id,
           title: city,
           lat: lat,
-          lng: lon, //fix
+          lng: lon,
         };
 
         await db.locationStore.addLocation(newLocation);
