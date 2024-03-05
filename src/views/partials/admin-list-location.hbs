@@ -1,12 +1,13 @@
 <div class="box box-link-hover-shadow">
-    <h1 class="title">Admin Locations</h1>
+    <h1 class="title">All Locations</h1>
     {{#each allLocations}}
     <div class="box box-link-hover-shadow">
         <h2 class="title">
             {{title}}
         </h2>
         <div class="block">
-            <strong>Address: </strong> {{address}}
+            <p><strong>Latitude: </strong>{{lat}}</p>
+            <p><strong>Longitude: </strong>{{lng}}</p>
         </div>
 
         <a href="/location/{{_id}}" class="button">
