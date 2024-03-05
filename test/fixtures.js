@@ -5,6 +5,14 @@ export const maggie = {
   password: "secret",
 };
 
+export const admin = {
+  firstName: "Kate",
+  lastName: "Molony",
+  email: "admin@admin.com",
+  password: "password",
+};
+
+
 export const maggieCredentials = {
   email: "maggie@simpson.com",
   password: "secret"

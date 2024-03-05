@@ -48,7 +48,13 @@ export const accountsController = {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
       if (!user || user.password !== password) {
+        console.log("This user does not exist");
         return h.redirect("/");
+      }
+      if (user.email == "admin@admin.com" || user.password == "password") {
+        console.log("admin sign in");
+        request.cookieAuth.set({ id: user._id });
+        return h.redirect("/admin");
       }
       request.cookieAuth.set({ id: user._id });
       return h.redirect("/dashboard");

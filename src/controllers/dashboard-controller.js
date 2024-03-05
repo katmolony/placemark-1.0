@@ -19,6 +19,19 @@ export const dashboardController = {
     },
   },
 
+  admin: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const allLocations = await db.locationStore.getAllLocations();
+      const viewData = {
+        title: "Placemark Admin Dashboard",
+        user: loggedInUser,
+        allLocations: allLocations,
+      };
+      return h.view("admin-view", viewData);
+    },
+  },
+
   addLocation: {
     validate: {
       payload: LocationSpec,
@@ -68,7 +81,7 @@ export const dashboardController = {
     handler: async function (request, h) {
       const location = await db.locationStore.getLocationById(request.params.id);
       await db.locationStore.deleteLocationById(location._id);
-      return h.redirect("/dashboard");
+      return h.redirect("/admin");
     },
   },
 };

@@ -1,0 +1,24 @@
+<div class="box box-link-hover-shadow">
+    <h1 class="title">Admin Locations</h1>
+    {{#each allLocations}}
+    <div class="box box-link-hover-shadow">
+        <h2 class="title">
+            {{title}}
+        </h2>
+        <div class="block">
+            <strong>Address: </strong> {{address}}
+        </div>
+
+        <a href="/location/{{_id}}" class="button">
+            <span class="icon is-small">
+                <i class="fas fa-folder-open"></i>
+            </span>
+        </a>
+        <a href="/dashboard/deletelocation/{{_id}}" class="button">
+            <span class="icon is-small">
+                <i class="fas fa-trash"></i>
+            </span>
+        </a>
+    </div>
+    {{/each}}
+</div>

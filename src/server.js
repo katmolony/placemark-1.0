@@ -81,10 +81,13 @@ async function init() {
   server.auth.default("session");
 
   db.init("mongo");
+
   server.route(webRoutes);
   server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
+  // for admin
+  //console.log(`AdminJS available at ${server.info.uri}${adminOptions.rootPath}`);
 }
 
 process.on("unhandledRejection", (err) => {
