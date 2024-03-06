@@ -1,13 +1,19 @@
 {{> admin-menu active="admin-dashboard"}}
-
-<section class="section">
-    <div class="block">
-        <label class="title">Admin Dashboard</label>
-        <p> Admin has the power to add and delete City Locations</p>
+<div class="card">
+    <div class="card-content">
+<div class="block">
+    <h2 class="title">Admin Dashboard</h2>
+    <ul>
+        <li><i class="fas fa-check"></i> Delete City Locations</li>
+        <li><i class="fas fa-check"></i> Delete User Accounts</li>
+    </ul>
+</div>
+        <div class="content">
+            {{> admin-analytics }}
+        </div>
     </div>
-</section>
+</div>
 <section class="section">
-    {{> admin-analytics }}
     {{> admin-list-user }}
     {{> admin-list-location}}
 </section>

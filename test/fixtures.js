@@ -44,6 +44,8 @@ export const greece = {
   imageURL: "https://cdn.britannica.com/82/195482-050-2373E635/Amalfi-Italy.jpg",
   lat: 100,
   lng: 200,
+  weather: "Sunny",
+  temp: 23.5,
 };
 
 export const testLocations = [
@@ -52,18 +54,24 @@ export const testLocations = [
     imageURL: "https://cdn.britannica.com/82/195482-050-2373E635/Amalfi-Italy.jpg",
     lat: 100,
     lng: 200,
+    weather: "Sunny",
+    temp: 23.5,
   },
   {
     title: "Spain",
     imageURL: "https://lh5.googleusercontent.com/p/AF1QipPwWQvGO_HOnmjoMvNAeLcyrAK5uPjTlNFvxTws=w540-h312-n-k-no",
     lat: 100,
     lng: 200,
+    weather: "Sunny",
+    temp: 23.5,
   },
   {
     title: "Portugal",
     imageURL: "https://lh5.googleusercontent.com/p/AF1QipNPJSyPRk-i6wRJQ3IJwjCxE2qdbGXCFpkXQ_LR=w540-h312-n-k-no",
     lat: 100,
     lng: -200,
+    weather: "Sunny",
+    temp: 23.5,
   },
 ];
 // business
@@ -81,6 +89,8 @@ export const italy = {
   imageURL: "https://cdn.britannica.com/82/195482-050-2373E635/Amalfi-Italy.jpg",
   lat: 100,
   lng: 200,
+  weather: "Sunny",
+  temp: 23.5,
 };
 
 export const testBusinesss = [

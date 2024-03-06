@@ -1,8 +1,21 @@
 {{> menu}}
 
+<div class="box box-link-hover-shadow">
+    <h1 class="title">{{location.title}}</h1>
+    <div class="box box-link-hover-shadow">
+        <h2 class="title">
+            {{firstName}} {{lastName}}
+        </h2>
+        <div class="block">
+            <p><strong>Weather: </strong>{{location.weather}}</p>
+            <p><strong>Temperature: </strong>{{location.temp}}</p>
+        </div>
+    </div>
+</div>
+
 <section class="section">
   <div class="title">
-    {{location.title}}
+    What To Do in {{location.title}}
   </div>
   {{> list-business}}
   {{> add-business}}

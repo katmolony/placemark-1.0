@@ -3,8 +3,13 @@ import { db } from "../models/db.js";
 export const adminAnalytics = {
 
     getUserCount(users) {
-        var numUsers = users.length - 1;
+        const numUsers = users.length;
         return numUsers;
+    },
+
+    getLocationCount(location) {
+        const numlocation = location.length;
+        return numlocation;
     }
 
 }

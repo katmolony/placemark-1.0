@@ -46,6 +46,8 @@ export const LocationSpec = Joi.object()
     imageURL: Joi.string().optional().example("https://cdn.britannica.com/82/195482-050-2373E635/Amalfi-Italy.jpg"),
     lat: Joi.number().allow("").optional().example(-3.56),
     lng: Joi.number().allow("").optional().example(35.675),
+    weather:Joi.string().allow("").optional().example("Sunny"),
+    temp: Joi.number().optional().example(35.6),
     userid: IdSpec,
     businesss: BusinessArraySpec,
   })

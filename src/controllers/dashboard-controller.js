@@ -24,9 +24,10 @@ export const dashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const allLocations = await db.locationStore.getAllLocations();
-      // User analytics
       const allUsers = await db.userStore.getAllUsers();
+      // User analytics
       const numUsers = await adminAnalytics.getUserCount(allUsers);
+      const numLocation = await adminAnalytics.getLocationCount(allLocations);
 
       const viewData = {
         title: "Placemark Admin Dashboard",
@@ -34,6 +35,7 @@ export const dashboardController = {
         allLocations: allLocations,
         allUsers: allUsers,
         numUsers: numUsers,
+        numLocation: numLocation,
       };
       return h.view("admin-view", viewData);
     },
@@ -59,8 +61,8 @@ export const dashboardController = {
       try {
         const response = await axios.get(requestUrl);
         const { lat, lon } = response.data.coord;
-        // const { main } = response.data.weather;
-        // const { temp } = response.data.main;
+        const { main } = response.data.weather[0];
+        const { temp } = response.data.main;
 
         const newLocation = {
           userid: loggedInUser._id,
@@ -68,10 +70,9 @@ export const dashboardController = {
           imageURL: imageURL,
           lat: lat,
           lng: lon,
-          // weather: main,
-          // temp: temp,
+         weather: main,
+          temp: temp,
         };
-
         await db.locationStore.addLocation(newLocation);
         return h.redirect("/dashboard");
       } catch (error) {
