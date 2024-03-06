@@ -25,11 +25,6 @@ export const webRoutes = [
   { method: "POST", path: "/location/{id}/addbusiness", config: locationController.addBusiness },
   { method: "GET", path: "/location/{id}/deletebusiness/{businessid}", config: locationController.deleteBusiness },
   { method: "GET", path: "/location/{id}/filterbusinesscategory", config: locationController.filterBusinessCategory },
-  // { method: 'GET', path: '/location/{id}/searchbusinesscategory',
-  //   config: {
-  //     handler: locationController.searchBusinessCategory, // Make sure the handler references the correct controller method
-  //   }
-  // },
 
   { method: "GET", path: "/location/{locationid}/business/{id}", config: businessController.index },
   { method: "POST", path: "/location/{locationid}/updateBusiness/{businessid}", config: businessController.update },

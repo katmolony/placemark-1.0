@@ -21,8 +21,8 @@ export const placemarkService = {
   },
 
   async deleteAllUsers() {
-    const res = await axios.delete(`${this.placemarkUrl}/api/users`);
-    return res.data;
+    const response = await axios.delete(`${this.placemarkUrl}/api/users`);
+    return response.data;
   },
 
   async createLocation(location) {
@@ -61,8 +61,8 @@ export const placemarkService = {
   },
 
   async deleteAllBusinesss() {
-    const res = await axios.delete(`${this.placemarkUrl}/api/businesss`);
-    return res.data;
+    const response = await axios.delete(`${this.placemarkUrl}/api/businesss`);
+    return response.data;
   },
 
   async getBusiness(id) {

@@ -1,10 +1,9 @@
 import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { placemarkService } from "./placemark-service.js";
-import { maggie, greece, testLocations, testBusinesss, mcdonalds } from "../fixtures.js";
+import { maggie, greece, maggieCredentials, testLocations, testBusinesss, mcdonalds } from "../fixtures.js";
 
 // import { maggie, mxozart, testLocations, testTXracks, cxoncerto } from "../fixtures.js";
-
 
 suite("Business API tests", () => {
   let user = null;
@@ -13,12 +12,12 @@ suite("Business API tests", () => {
   setup(async () => {
     placemarkService.clearAuth();
     user = await placemarkService.createUser(maggie);
-    await placemarkService.authenticate(maggie);
+    await placemarkService.authenticate(maggieCredentials);
     await placemarkService.deleteAllLocations();
     await placemarkService.deleteAllBusinesss();
     await placemarkService.deleteAllUsers();
     user = await placemarkService.createUser(maggie);
-    await placemarkService.authenticate(maggie);
+    await placemarkService.authenticate(maggieCredentials);
     greece.userid = user._id;
     locationList = await placemarkService.createLocation(greece);
   });

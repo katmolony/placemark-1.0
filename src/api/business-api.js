@@ -10,7 +10,7 @@ export const businessApi = {
     },
     async handler(request, h) {
       try {
-        const businesses = await db.businessStore.getAllBusinesses();
+        const businesses = await db.businessStore.getAllBusinesss();
         return businesses;
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
@@ -72,7 +72,7 @@ export const businessApi = {
     },
     async handler(request, h) {
       try {
-        await db.businessStore.deleteAllBusinesses();
+        await db.businessStore.deleteAllBusinesss();
         return h.response().code(204);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
