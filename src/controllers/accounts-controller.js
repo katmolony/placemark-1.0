@@ -52,7 +52,7 @@ export const accountsController = {
         return h.redirect("/");
       }
       // for admin account
-      if (user.email == "admin@admin.com" || user.password == "password") {
+      if (user.email == process.env.ADMIN_NAME || user.password == process.env.ADMIN_PASSWORD) {
         console.log("admin sign in");
         request.cookieAuth.set({ id: user._id });
         return h.redirect("/admin");

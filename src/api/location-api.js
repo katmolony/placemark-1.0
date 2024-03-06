@@ -104,22 +104,3 @@ export const locationApi = {
     description: "Delete all LocationApi",
   },
 };
-
-  // suggestCity: {
-  //   auth: {
-    //   strategy: "jwt",
-    // },
-  //   handler: async function (request, h) {
-  //     try {
-  //       const { query } = request.query;
-  //       // Make a request to the external API to get city name suggestions
-  //       const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=6f31a0fd23d1415ef151dd57611408aa`);
-  //       // const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${openWeatherApiKey}`);
-  //       const suggestions = response.data.map(city => city.name); // Assuming the API response has a 'name' field for each city
-  //       return suggestions;
-  //     } catch (err) {
-  //       return Boom.serverUnavailable("Failed to fetch city suggestions");
-  //     }
-  //   },
-  // },
-

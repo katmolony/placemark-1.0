@@ -32,6 +32,7 @@ export const dashboardController = {
         title: "Placemark Admin Dashboard",
         user: loggedInUser,
         allLocations: allLocations,
+        allUsers: allUsers,
         numUsers: numUsers,
       };
       return h.view("admin-view", viewData);
