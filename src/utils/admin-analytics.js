@@ -10,6 +10,11 @@ export const adminAnalytics = {
     getLocationCount(location) {
         const numlocation = location.length;
         return numlocation;
-    }
+    },
+
+    getBusinessCount(business) {
+        const numBusiness = business.length;
+        return numBusiness;
+    },
 
 }

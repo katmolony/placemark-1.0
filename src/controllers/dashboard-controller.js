@@ -25,9 +25,11 @@ export const dashboardController = {
       const loggedInUser = request.auth.credentials;
       const allLocations = await db.locationStore.getAllLocations();
       const allUsers = await db.userStore.getAllUsers();
+      const allBusinesss = await db.businessStore.getAllBusinesss();
       // User analytics
       const numUsers = await adminAnalytics.getUserCount(allUsers);
       const numLocation = await adminAnalytics.getLocationCount(allLocations);
+      const numBusiness = await adminAnalytics.getBusinessCount(allBusinesss);
 
       const viewData = {
         title: "Placemark Admin Dashboard",
@@ -36,6 +38,7 @@ export const dashboardController = {
         allUsers: allUsers,
         numUsers: numUsers,
         numLocation: numLocation,
+        numBusiness: numBusiness,
       };
       return h.view("admin-view", viewData);
     },
