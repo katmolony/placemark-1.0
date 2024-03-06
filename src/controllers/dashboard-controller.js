@@ -1,6 +1,7 @@
 import { db } from "../models/db.js";
 import { LocationSpec } from "../models/joi-schemas.js";
 import axios from "axios";
+import { adminAnalytics } from "../utils/admin-analytics.js";
 
 export const dashboardController = {
   index: {
@@ -23,10 +24,15 @@ export const dashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const allLocations = await db.locationStore.getAllLocations();
+      // User analytics
+      const allUsers = await db.userStore.getAllUsers();
+      const numUsers = await adminAnalytics.getUserCount(allUsers);
+
       const viewData = {
         title: "Placemark Admin Dashboard",
         user: loggedInUser,
         allLocations: allLocations,
+        numUsers: numUsers,
       };
       return h.view("admin-view", viewData);
     },
