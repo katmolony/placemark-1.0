@@ -59,6 +59,8 @@ export const dashboardController = {
       try {
         const response = await axios.get(requestUrl);
         const { lat, lon } = response.data.coord;
+        // const { main } = response.data.weather;
+        // const { temp } = response.data.main;
 
         const newLocation = {
           userid: loggedInUser._id,
@@ -66,6 +68,8 @@ export const dashboardController = {
           imageURL: imageURL,
           lat: lat,
           lng: lon,
+          // weather: main,
+          // temp: temp,
         };
 
         await db.locationStore.addLocation(newLocation);
