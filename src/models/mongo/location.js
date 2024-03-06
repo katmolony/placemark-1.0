@@ -4,6 +4,7 @@ const { Schema } = Mongoose;
 
 const locationSchema = new Schema({
   title: String,
+  imageURL: String,
   lat: Number,
   lng: Number,
   temp: Number,

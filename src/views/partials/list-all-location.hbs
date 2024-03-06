@@ -2,17 +2,25 @@
   <h1 class="title">Our Top Locations</h1>
   {{#each allLocations}}
   <div class="box box-link-hover-shadow">
-    <h2 class="title">
-      {{title}}
-    </h2>
-    <h2>
-      {{temp}}
-    </h2>
-    <a href="/location/{{_id}}" class="button">
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img src={{imageURL}}>
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <h2 class="title">
+            {{title}}
+          </h2>
+        </div>
+      </div>
+          <a href="/location/{{_id}}" class="button">
       <span class="icon is-small">
         <i class="fas fa-folder-open"></i>
       </span>
     </a>
+    </article>
   </div>
   {{/each}}
 </div>

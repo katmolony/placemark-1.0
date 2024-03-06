@@ -41,6 +41,7 @@ export const testUsers = [
 
 export const greece = {
   title: "Greece",
+  imageURL: "https://cdn.britannica.com/82/195482-050-2373E635/Amalfi-Italy.jpg",
   lat: 100,
   lng: 200,
 };
@@ -48,16 +49,19 @@ export const greece = {
 export const testLocations = [
   {
     title: "Italy",
+    imageURL: "https://cdn.britannica.com/82/195482-050-2373E635/Amalfi-Italy.jpg",
     lat: 100,
     lng: 200,
   },
   {
     title: "Spain",
+    imageURL: "https://lh5.googleusercontent.com/p/AF1QipPwWQvGO_HOnmjoMvNAeLcyrAK5uPjTlNFvxTws=w540-h312-n-k-no",
     lat: 100,
     lng: 200,
   },
   {
     title: "Portugal",
+    imageURL: "https://lh5.googleusercontent.com/p/AF1QipNPJSyPRk-i6wRJQ3IJwjCxE2qdbGXCFpkXQ_LR=w540-h312-n-k-no",
     lat: 100,
     lng: -200,
   },
@@ -74,6 +78,7 @@ export const mcdonalds = {
 
 export const italy = {
   title: "Italy",
+  imageURL: "https://cdn.britannica.com/82/195482-050-2373E635/Amalfi-Italy.jpg",
   lat: 100,
   lng: 200,
 };

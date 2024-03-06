@@ -51,6 +51,7 @@ export const accountsController = {
         console.log("This user does not exist");
         return h.redirect("/");
       }
+      // for admin account
       if (user.email == "admin@admin.com" || user.password == "password") {
         console.log("admin sign in");
         request.cookieAuth.set({ id: user._id });

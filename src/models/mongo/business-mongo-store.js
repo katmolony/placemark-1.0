@@ -44,7 +44,6 @@ export const businessMongoStore = {
     businessDoc.category = updatedBusiness.category;
     // businessDoc.address = updatedBusiness.address;
     businessDoc.description = updatedBusiness.description;
-    // add fields
     await businessDoc.save();
   },
 

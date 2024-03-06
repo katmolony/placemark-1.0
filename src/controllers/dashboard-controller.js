@@ -49,6 +49,7 @@ export const dashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const city = request.payload.title;
+      const imageURL = request.payload.imageURL;
 
       const apiKey = process.env.OPENWEATHER_API_KEY;
 
@@ -61,6 +62,7 @@ export const dashboardController = {
         const newLocation = {
           userid: loggedInUser._id,
           title: city,
+          imageURL: imageURL,
           lat: lat,
           lng: lon,
         };

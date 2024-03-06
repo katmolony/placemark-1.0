@@ -1,44 +1,14 @@
 <form action="/dashboard/addlocation" method="POST">
+    <label class="label">Add Favourite City</label>
     <div class="field is-horizontal">
         <div class="field-body">
             <div class="field">
-                <label class="label">Add Favourite City</label>
-                <input class="input" type="text" placeholder="Enter city name" name="title" id="titleInput" onKeyUp="showResults(this.value)">
-                <div id="result"></div>
+                <input class="input" type="text" placeholder="Enter city name" name="title">
+            </div>
+            <div class="field">
+                <input class="input" type="text" placeholder="Enter city image URL" name="imageURL">
             </div>
         </div>
     </div>
     <button class="button is-link">Add Location</button>
 </form>
-
-<script>
-    var search_terms = ['Amsterdam', 'Dubai', 'London', 'Rome', 'Paris', 'New York'];
-
-    function autocompleteMatch(input) {
-        if (input == '') {
-            return [];
-        }
-        var reg = new RegExp(input, 'i'); // 'i' flag for case-insensitive matching
-        return search_terms.filter(function (term) {
-            if (term.match(reg)) {
-                return term;
-            }
-        });
-    }
-
-    function showResults(val) {
-        res = document.getElementById("result");
-        res.innerHTML = '';
-        let list = '';
-        let terms = autocompleteMatch(val);
-        for (i = 0; i < terms.length; i++) {
-            list += '<li onclick="selectSuggestion(\'' + terms[i] + '\')">' + terms[i] + '</li>';
-        }
-        res.innerHTML = '<ul>' + list + '</ul>';
-    }
-
-    function selectSuggestion(term) {
-        document.getElementById('titleInput').value = term;
-        document.getElementById('result').innerHTML = ''; // Clear the suggestions
-    }
-</script>

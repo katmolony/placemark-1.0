@@ -43,6 +43,7 @@ export const BusinessArraySpec = Joi.array().items(BusinessSpecPlus).label("Busi
 export const LocationSpec = Joi.object()
   .keys({
     title: Joi.string().required().example("Italy"),
+    imageURL: Joi.string().optional().example("https://cdn.britannica.com/82/195482-050-2373E635/Amalfi-Italy.jpg"),
     lat: Joi.number().allow("").optional().example(-3.56),
     lng: Joi.number().allow("").optional().example(35.675),
     userid: IdSpec,
