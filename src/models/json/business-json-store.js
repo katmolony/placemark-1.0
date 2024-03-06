@@ -58,6 +58,8 @@ export const businessJsonStore = {
   async updateBusiness(business, updatedBusiness) {
     business.title = updatedBusiness.title;
     business.category = updatedBusiness.category;
+    business.description = updatedBusiness.description;
     await db.write();
   },
+
 };

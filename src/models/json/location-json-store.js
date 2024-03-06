@@ -43,4 +43,13 @@ export const locationJsonStore = {
     db.data.locations = [];
     await db.write();
   },
+
+  async getLocationByCity(cityName) {
+    const location = db.data.locations.find((location) => location.title === cityName);
+    if ((location = null)) {
+      return null;
+    } else {
+      return location;
+    }
+  },
 };

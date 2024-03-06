@@ -7,7 +7,8 @@
       "category": "Dining",
       "lat": 100,
       "lng": 200,
-      "postcode": "AXI 111",
+      "address": "12 Fake Street",
+      "description": "Fun place",
       "_id": "dc72d5ef-4934-4db0-acdd-d7020f4846be",
       "locationid": "b2facd7b-7594-4902-b5e2-a34c224a3007"
     },
@@ -16,7 +17,8 @@
       "category": "Accommodation",
       "lat": 100,
       "lng": 200,
-      "postcode": "AXI 111",
+      "address": "12 Fake Street",
+      "description": "Fun place",
       "_id": "d2e55879-2264-45ab-84f2-fef4fb01ad3a",
       "locationid": "b2facd7b-7594-4902-b5e2-a34c224a3007"
     },
@@ -25,7 +27,8 @@
       "category": "Activities",
       "lat": 100,
       "lng": 200,
-      "postcode": "AXI 111",
+      "address": "12 Fake Street",
+      "description": "Fun place",
       "_id": "9f348302-d6a3-4253-9d7b-f15779b172ca",
       "locationid": "b2facd7b-7594-4902-b5e2-a34c224a3007"
     }
