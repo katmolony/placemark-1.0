@@ -19,7 +19,7 @@ export const locationController = {
       payload: BusinessSpec,
       options: { abortEarly: false },
       failAction: function (request, h, error) {
-        return h.view("dashboard-view", { title: "Add Business error", errors: error.details }).takeover().code(400);
+        return h.view("location-view", { title: "Add Business error", errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
@@ -47,7 +47,7 @@ export const locationController = {
           return h.redirect(`/location/${location._id}`);
         } else {
           console.error("Invalid address");
-          return h.redirect(`/location/${location._id}`, { title: "Add Business Error", error: "Invalid address" }).takeover().code(400);
+          return h.redirect(`/location/${location._id}`);
         }
       } catch (error) {
         console.error("Error fetching coordinates:", error);

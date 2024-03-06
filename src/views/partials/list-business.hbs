@@ -1,76 +1,26 @@
 {{#each location.businesss}}
 <div class="box box-link-hover-shadow">
-  <h3 class="title">
-    {{title}}
-  </h3>
-  <h2>
-    {{category}}
-  </h2>
-  <h2>
-    {{description}}
-  </h2>
-  <h2>
-    {{address}}
-  </h2>
-  <h2>
-    {{lat}}
-  </h2>
-  <h2>
-    {{lng}}
-  </h2>
-  <a href="/location/{{../location._id}}/business/{{_id}}" class="button">
-    <span class="icon is-small">
-      <i class="fas fa-folder-open"></i>
-    </span>
-  </a>
-    <a href="/location/{{../location._id}}/deletebusiness/{{_id}}" class="button">
-    <span class="icon is-small">
-      <i class="fas fa-edit"></i>
-    </span>
-  </a>
-  <a href="/location/{{../location._id}}/deletebusiness/{{_id}}" class="button">
-    <span class="icon is-small">
-      <i class="fas fa-trash"></i>
-    </span>
-  </a>
+  <div class="content">
+    <h3 class="title">{{title}}</h3>
+    <p><strong>Category:</strong> {{category}}</p>
+    <p><strong>Description:</strong> {{description}}</p>
+    <p><strong>Address:</strong> {{address}}</p>
+    <p><strong>Latitude:</strong> {{lat}}</p>
+    <p><strong>Longitude:</strong> {{lng}}</p>
+  </div>
+  <div class="buttons">
+    <a href="/location/{{../location._id}}/business/{{_id}}" class="button is-primary">
+      <span class="icon is-small">
+        <i class="fas fa-edit"></i>
+      </span>
+      <span>Edit</span>
+    </a>
+    <a href="/location/{{../location._id}}/deletebusiness/{{_id}}" class="button is-danger">
+      <span class="icon is-small">
+        <i class="fas fa-trash"></i>
+      </span>
+      <span>Delete</span>
+    </a>
+  </div>
 </div>
-
 {{/each}}
-{{!--
-<table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Category</th>
-      <th>address</th>
-      <th>lat</th>
-      <th>lng</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each location.businesss}}
-    <tr>
-      <td>
-        {{title}}
-      </td>
-      <td>
-        {{category}}
-      </td>
-      <td>
-        {{address}}
-      </td>
-      <td>
-        {{lat}}
-      </td>
-      <td>
-        {{lng}}
-      </td>
-      <td>
-        <a href="/location/{{../location._id}}/deletebusiness/{{_id}}" class="ui icon button">
-          <i class="fas fa-trash"></i>
-        </a>
-      </td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table> --}}
