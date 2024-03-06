@@ -4,9 +4,6 @@
   "description": "Playtime: a Hapi/node application for managing Playlists",
   "main": "src/server.js",
   "type": "module",
-  "engines": {
-    "node": ">=16"
-  },
   "scripts": {
     "start": "node src/server.js",
     "lint": "./node_modules/.bin/eslint . --ext .js",
@@ -45,5 +42,8 @@
     "lowdb": "^7.0.1",
     "mongoose": "^8.2.0",
     "uuid": "^9.0.1"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }
