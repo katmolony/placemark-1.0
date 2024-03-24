@@ -3,6 +3,7 @@ export const maggie = {
   lastName: "Simpson",
   email: "maggie@simpson.com",
   password: "secret",
+  userType: "user",
 };
 
 export const admin = {
@@ -10,6 +11,7 @@ export const admin = {
   lastName: "Molony",
   email: "admin@admin.com",
   password: "password",
+  userType: "admin",
 };
 
 
@@ -24,18 +26,21 @@ export const testUsers = [
     lastName: "Simpson",
     email: "homer@simpson.com",
     password: "secret",
+    userType: "user",
   },
   {
     firstName: "Marge",
     lastName: "Simpson",
     email: "marge@simpson.com",
     password: "secret",
+    userType: "user",
   },
   {
     firstName: "Bart",
     lastName: "Simpson",
     email: "bart@simpson.com",
     password: "secret",
+    userType: "user",
   },
 ];
 
