@@ -47,10 +47,12 @@ export const dashboardController = {
   owner: {
     handler: async function (request,h) {
       const loggedInUser = request.auth.credentials;
+      const allLocations = await db.locationStore.getAllLocations();
 
       const viewData = {
         title: "placemark Owner Dashboard",
         user: loggedInUser,
+        allLocations: allLocations,
       };
       return h.view("owner-view", viewData);
     },
