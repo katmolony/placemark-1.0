@@ -44,6 +44,18 @@ export const dashboardController = {
     },
   },
 
+  owner: {
+    handler: async function (request,h) {
+      const loggedInUser = request.auth.credentials;
+
+      const viewData = {
+        title: "placemark Owner Dashboard",
+        user: loggedInUser,
+      };
+      return h.view("owner-view", viewData);
+    },
+  },
+
   addLocation: {
     validate: {
       payload: LocationSpec,

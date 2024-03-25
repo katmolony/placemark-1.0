@@ -57,6 +57,12 @@ export const accountsController = {
         request.cookieAuth.set({ id: user._id });
         return h.redirect("/admin");
       }
+      // for owner account login
+      if (user.userType == "owner") {
+        console.log("busniess owner sign in");
+        request.cookieAuth.set({ id: user._id });
+        return h.redirect("/owner");
+      }
       request.cookieAuth.set({ id: user._id });
       return h.redirect("/dashboard");
     },
