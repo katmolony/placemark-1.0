@@ -10,13 +10,31 @@ export const admin = {
   firstName: "Kate",
   lastName: "Molony",
   email: "admin@admin.com",
-  password: "password",
+  password: "secret",
   userType: "admin",
+};
+
+export const owner = {
+  firstName: "Mr. Business",
+  lastName: "Owner",
+  email: "owner@owner.com",
+  password: "secret",
+  userType: "owner",
 };
 
 
 export const maggieCredentials = {
   email: "maggie@simpson.com",
+  password: "secret"
+};
+
+export const adminCredentials = {
+  email: "admin@admin.com",
+  password: "secret"
+};
+
+export const ownerCredentials = {
+  email: "owner@owner.com",
   password: "secret"
 };
 
@@ -29,18 +47,18 @@ export const testUsers = [
     userType: "user",
   },
   {
-    firstName: "Marge",
-    lastName: "Simpson",
-    email: "marge@simpson.com",
-    password: "secret",
-    userType: "user",
+  firstName: "Mr. Business",
+  lastName: "Owner",
+  email: "owner@owner.com",
+  password: "secret",
+  userType: "owner",
   },
   {
-    firstName: "Bart",
-    lastName: "Simpson",
-    email: "bart@simpson.com",
+    firstName: "Kate",
+    lastName: "Molony",
+    email: "admin@admin.com",
     password: "secret",
-    userType: "user",
+    userType: "admin",
   },
 ];
 
