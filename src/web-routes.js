@@ -18,7 +18,10 @@ export const webRoutes = [
   { method: "GET", path: "/dashboard", config: dashboardController.index },
   { method: "POST", path: "/dashboard/addlocation", config: dashboardController.addLocation },
 
+  // for admin dashboard
   { method: "GET", path: "/admin", config: dashboardController.admin },
+    // for owner dashboard
+  { method: "GET", path: "/owner", config: dashboardController.owner },
   { method: "GET", path: "/dashboard/deletelocation/{id}", config: dashboardController.deleteLocation },
   { method: "GET", path: "/dashboard/deleteuser/{id}", config: dashboardController.deleteUser },
 
