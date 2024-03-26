@@ -3,6 +3,7 @@ import { dashboardController } from "./controllers/dashboard-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
 import { locationController } from "./controllers/location-controller.js";
 import { businessController } from "./controllers/business-controller.js";
+import { reviewController } from "./controllers/review-controller.js";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: accountsController.index },
@@ -31,5 +32,9 @@ export const webRoutes = [
   { method: "POST", path: "/location/{locationid}/updateBusiness/{businessid}", config: businessController.update },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
+
+  // Reviews
+  { method: "GET", path: "/business/(businessid}/review/{id}", config: reviewController.index },
+  { method: "POST", path: "/business/{id}/addreview", config: businessController.addReview },
   
 ];
