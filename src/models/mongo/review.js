@@ -6,18 +6,19 @@ const reviewSchema = new Schema(
   {
     content: String,
     rating: Number,
+    timestamp: String,
     businessid: {
       type: Schema.Types.ObjectId,
       ref: "Business",
-      required: true
+     // required: true
     },
     userid: {
         type: Schema.Types.ObjectId,
         ref: "User",
-        required: true 
+      //  required: true 
       },
   },
-  { timestamps: true } // Add timestamps option to automatically add createdAt and updatedAt fields
+  // { timestamp: true } // Add timestamps option to automatically add createdAt and updatedAt fields
 );
 
 export const Review = Mongoose.model("Review", reviewSchema);
