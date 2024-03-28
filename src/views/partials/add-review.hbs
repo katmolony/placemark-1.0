@@ -1,0 +1,23 @@
+<form class="box" action="/location/{{location._id}}/business/{{business._id}}/addreview" method="POST">
+    <label>Enter Review Details:</label>
+    <div class="field-body">
+        <div class="field">
+            <div class="control">
+                <div class="select">
+                    <select name="rating">
+                        <option value="" selected disabled>Select Rating</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Star</option>
+                        <option value="3">3 Star</option>
+                        <option value="4">4 Star</option>
+                        <option value="5">5 Star</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <textarea class="textarea" type="text" placeholder="Enter review content" name="content"></textarea>
+    </div>
+    <button class="button is-primary">Add Review</button>
+</form>
