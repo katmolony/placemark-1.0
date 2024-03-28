@@ -34,7 +34,7 @@ export const webRoutes = [
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
 
   // Reviews
-  { method: "GET", path: "/business/(businessid}/review/{id}", config: reviewController.index },
-  { method: "POST", path: "/business/{id}/addreview", config: businessController.addReview },
+  // { method: "GET", path: "/business/(businessid}/review/{id}", config: reviewController.index },
+  { method: "POST", path: "/location/{locationid}/business/{businessid}/addreview", config: businessController.addReview },
   
 ];
