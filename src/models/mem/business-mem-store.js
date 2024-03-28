@@ -1,4 +1,5 @@
 import { v4 } from "uuid";
+import { reviewMemStore } from "./review-mem-store.js";
 
 let businesss = [];
 
@@ -24,6 +25,12 @@ export const businessMemStore = {
       foundBusiness = null;
     }
     return foundBusiness;
+  },
+
+  async getReviewsByBusinessId(id) {
+    const list = businesss.find((business) => business._id === id);
+    list.reviews = await reviewMemStore.getReviewsByBuisnessId(list._id);
+    return list;
   },
 
   async getLocationBusinesss(locationId) {
