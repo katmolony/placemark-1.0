@@ -61,3 +61,20 @@ export const LocationSpecPlus = LocationSpec.keys({
 }).label("LocationPlus");
 
 export const LocationArraySpec = Joi.array().items(LocationSpecPlus).label("LocationArray");
+
+export const ReviewSpec = Joi.object()
+  .keys({
+    content: Joi.string().required().example("Italy"),
+    rating: Joi.number().optional().example(2),
+    userid: IdSpec,
+    businessid: IdSpec,
+    timestamp: Joi.string().regex(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/),
+  })
+.label("Review");
+
+export const ReviewSpecPlus = ReviewSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("ReviewPlus");
+
+export const ReviewArraySpec = Joi.array().items(ReviewSpecPlus).label("ReviewArray");
