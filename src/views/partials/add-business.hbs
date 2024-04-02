@@ -1,4 +1,6 @@
-<form class="box" action="/location/{{location._id}}/addbusiness" method="POST">
+<form class="box" action="/location/{{location._id}}/addbusiness" method="POST" enctype="multipart/form-data">
+<h1 class="title">Add Business</h1>
+<h2 class="subtitle">Add your business details below to upload to the Placemark App</h2>
   <label>Enter Business Details:</label>
   <div class="field is-horizontal">
     <div class="field-body">
@@ -25,7 +27,33 @@
     </div>
   </div>
   <div class="field">
+    <label>Upload Business Image:</label>
+    <div id="file-js-example" class="file has-name">
+      <label class="file-label">
+        <input class="file-input" type="file" accept="image/*" name="image" />
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label"> Choose a file… </span>
+        </span>
+        <span class="file-name"> No file uploaded </span>
+      </label>
+    </div>
+    {{!-- <input class="input" type="file" accept="image/*" name="image"> --}}
+  </div>
+  <div class="field">
     <textarea class="textarea" type="text" placeholder="Enter description" name="description"></textarea>
   </div>
   <button class="button is-primary">Add Business</button>
 </form>
+
+<script>
+  const fileInput = document.querySelector("#file-js-example input[type=file]");
+  fileInput.onchange = () => {
+    if (fileInput.files.length > 0) {
+      const fileName = document.querySelector("#file-js-example .file-name");
+      fileName.textContent = fileInput.files[0].name;
+    }
+  };
+</script>
