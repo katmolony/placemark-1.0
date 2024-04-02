@@ -22,20 +22,19 @@ export const owner = {
   userType: "owner",
 };
 
-
 export const maggieCredentials = {
   email: "maggie@simpson.com",
-  password: "secret"
+  password: "secret",
 };
 
 export const adminCredentials = {
   email: "admin@admin.com",
-  password: "secret"
+  password: "secret",
 };
 
 export const ownerCredentials = {
   email: "owner@owner.com",
-  password: "secret"
+  password: "secret",
 };
 
 export const testUsers = [
@@ -47,11 +46,11 @@ export const testUsers = [
     userType: "user",
   },
   {
-  firstName: "Mr. Business",
-  lastName: "Owner",
-  email: "owner@owner.com",
-  password: "secret",
-  userType: "owner",
+    firstName: "Mr. Business",
+    lastName: "Owner",
+    email: "owner@owner.com",
+    password: "secret",
+    userType: "owner",
   },
   {
     firstName: "Kate",
@@ -107,6 +106,15 @@ export const mcdonalds = {
   lng: 200,
 };
 
+export const starbucks = {
+  title: "Starbucks Middle Street",
+  address: "123 Coffee Street, New Orleans",
+  category: "Dining",
+  description: "Lovely coffee",
+  lat: 200,
+  lng: 134,
+};
+
 export const italy = {
   title: "Italy",
   imageURL: "https://cdn.britannica.com/82/195482-050-2373E635/Amalfi-Italy.jpg",
@@ -145,3 +153,27 @@ export const testBusinesss = [
 ];
 
 export const serviceUrl = "http://localhost:3000";
+
+export const testReviews = [
+  {
+    content: "Nice food",
+    rating: 5,
+    timestamp: "2024-03-28 17:45:29",
+  },
+  {
+    content: "Nice place",
+    rating: 4,
+    timestamp: "2024-03-28 20:12:34",
+  },
+  {
+    content: "Nice music",
+    rating: 3,
+    timestamp: "2024-03-28 12:20:10",
+  },
+];
+
+export const fiveStarReview = {
+  content: "Nice food",
+  rating: 5,
+  timestamp: "2024-03-28 17:45:29",
+};
