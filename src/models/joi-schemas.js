@@ -5,7 +5,7 @@ export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).descrip
 export const UserCredentialsSpec = Joi.object()
   .keys({
     email: Joi.string().email().example("homer@simpson.com").required(),
-    password: Joi.string().example("secret").required(),
+    password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
   })
   .label("UserCredentials");
 
@@ -31,6 +31,7 @@ export const BusinessSpec = Joi.object()
     description: Joi.string().required().example("A lovely fake street, with fake businesses"),
     lat: Joi.number().allow("").optional().example(-3.56),
     lng: Joi.number().allow("").optional().example(35.675),
+    image: Joi.string().optional().example("/images/cloud-img.jpg"),
     locationid: IdSpec,
   })
   .label("Business");
