@@ -29,6 +29,27 @@ export const locationController = {
       // Nomanti Open street map, no APIkey needed
       const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
 
+      const image = request.payload.image; // Access uploaded file
+
+      // Ensure an image was uploaded
+      if (!image) {
+        console.error("No image uploaded");
+        return h.redirect(`/location/${location._id}`);
+      }
+
+      // Extract filename
+      const filename = image.hapi.filename;
+
+      // Construct the file path
+      const filepath = path.join(__dirname, "uploads", filename);
+
+      // Save the uploaded file to a directory on the server
+      await image.pipe(fs.createWriteStream(filepath));
+
+      // Read the file content
+      const fileContent = fs.readFileSync(filepath, { encoding: "base64" });
+      console.log(fileContent);
+
       try {
         const response = await axios.get(apiUrl);
 
@@ -41,8 +62,11 @@ export const locationController = {
             description: request.payload.description,
             address: address,
             lat: lat,
-            lng: lon, // change for API
+            lng: lon,
+            image: fileContent,
           };
+
+          // Save the business to the database
           await db.businessStore.addBusiness(location._id, newBusiness);
           return h.redirect(`/location/${location._id}`);
         } else {
@@ -51,7 +75,7 @@ export const locationController = {
         }
       } catch (error) {
         console.error("Error fetching coordinates:", error);
-        return h.redirect(`/location/${location._id}`, { title: "Add Business Error", error: "Failed to fetch coordinates" }).takeover().code(500);
+        return h.view("location-view", { title: "Add Business Error", error: "Failed to fetch coordinates" }).takeover().code(500);
       }
     },
   },

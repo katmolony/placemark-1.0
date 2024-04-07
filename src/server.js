@@ -82,6 +82,62 @@ async function init() {
 
   db.init("mongo");
 
+  // // Define route for handling file uploads
+  // server.route({
+  //   method: "POST",
+  //   path: "/location/{id}/addbusiness",
+  //   handler: async function (request, h) {
+  //     const location = await db.locationStore.getLocationById(request.params.id);
+  //     const address = request.payload.address;
+
+  //     // Nomanti Open street map, no APIkey needed
+  //     const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+
+  //     try {
+  //       const response = await axios.get(apiUrl);
+
+  //       if (response.data.length > 0) {
+  //         const { lat, lon } = response.data[0];
+
+  //         // Access uploaded image file
+  //         const image = request.file; // Corrected this line to access the uploaded file
+
+  //         const newBusiness = {
+  //           title: request.payload.title,
+  //           category: request.payload.category,
+  //           description: request.payload.description,
+  //           address: address,
+  //           lat: lat,
+  //           lng: lon,
+  //           image: image ? image.filename : null, // Save only the filename to the database
+  //         };
+
+  //         // Save the business to the database
+  //         await db.businessStore.addBusiness(location._id, newBusiness);
+  //         return h.redirect(`/location/${location._id}`);
+  //       } else {
+  //         console.error("Invalid address");
+  //         return h.redirect(`/location/${location._id}`);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching coordinates:", error);
+  //       return h.view("location-view", { title: "Add Business Error", error: "Failed to fetch coordinates" }).takeover().code(500);
+  //     }
+  //   },
+  //   options: {
+  //     payload: {
+  //       output: "stream",
+  //       parse: true,
+  //       allow: "multipart/form-data",
+  //       multipart: true,
+  //       maxBytes: 10485760, // Adjust the maximum payload size limit for this route
+  //     },
+  //     pre: [
+  //       { method: upload.single("image") }, // 'image' should match the name attribute of your file input field
+  //     ],
+  //   },
+  // });
+
   server.route(webRoutes);
   server.route(apiRoutes);
   await server.start();

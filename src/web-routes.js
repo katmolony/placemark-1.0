@@ -21,7 +21,7 @@ export const webRoutes = [
 
   // for admin dashboard
   { method: "GET", path: "/admin", config: dashboardController.admin },
-    // for owner dashboard
+  // for owner dashboard
   { method: "GET", path: "/owner", config: dashboardController.owner },
   { method: "GET", path: "/dashboard/deletelocation/{id}", config: dashboardController.deleteLocation },
   { method: "GET", path: "/dashboard/deleteuser/{id}", config: dashboardController.deleteUser },
@@ -35,7 +35,7 @@ export const webRoutes = [
   { method: "POST", path: "/location/{locationid}/updateBusiness/{businessid}", config: businessController.update },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
-  
+
   // Reviews
   // { method: "GET", path: "/business/(businessid}/review/{id}", config: reviewController.index },
   { method: "POST", path: "/location/{locationid}/business/{businessid}/addreview", config: businessController.addReview },
