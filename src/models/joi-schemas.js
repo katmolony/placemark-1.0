@@ -23,6 +23,23 @@ export const UserSpecPlus = UserSpec.keys({
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
+export const ReviewSpec = Joi.object()
+  .keys({
+    content: Joi.string().required().example("Italy"),
+    rating: Joi.number().optional().example(2),
+    userid: IdSpec,
+    businessid: IdSpec,
+    timestamp: Joi.string().regex(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/),
+  })
+.label("Review");
+
+export const ReviewSpecPlus = ReviewSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("ReviewPlus");
+
+export const ReviewArraySpec = Joi.array().items(ReviewSpecPlus).label("ReviewArray");
+
 export const BusinessSpec = Joi.object()
   .keys({
     title: Joi.string().required().example("Munch Box"),
@@ -33,6 +50,7 @@ export const BusinessSpec = Joi.object()
     lng: Joi.number().allow("").optional().example(35.675),
     image: Joi.string().optional().example("/images/cloud-img.jpg"),
     locationid: IdSpec,
+    reviews: ReviewArraySpec,
   })
   .label("Business");
 
@@ -62,20 +80,3 @@ export const LocationSpecPlus = LocationSpec.keys({
 }).label("LocationPlus");
 
 export const LocationArraySpec = Joi.array().items(LocationSpecPlus).label("LocationArray");
-
-export const ReviewSpec = Joi.object()
-  .keys({
-    content: Joi.string().required().example("Italy"),
-    rating: Joi.number().optional().example(2),
-    userid: IdSpec,
-    businessid: IdSpec,
-    timestamp: Joi.string().regex(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/),
-  })
-.label("Review");
-
-export const ReviewSpecPlus = ReviewSpec.keys({
-  _id: IdSpec,
-  __v: Joi.number(),
-}).label("ReviewPlus");
-
-export const ReviewArraySpec = Joi.array().items(ReviewSpecPlus).label("ReviewArray");
