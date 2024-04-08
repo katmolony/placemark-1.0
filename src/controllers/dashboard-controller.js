@@ -2,15 +2,21 @@ import { db } from "../models/db.js";
 import { LocationSpec } from "../models/joi-schemas.js";
 import axios from "axios";
 import { adminAnalytics } from "../utils/admin-analytics.js";
+import { setCSRFToken, generateCSRFToken, validateCSRFToken } from "../middleware/csrf.js";
 
 export const dashboardController = {
   index: {
     handler: async function (request, h) {
+      // const csrfToken = generateCSRFToken();
+      // console.log(csrfToken);
+      // const csrfToken = request.payload.csrfToken;
+      // console.log(csrfToken);
       const loggedInUser = request.auth.credentials;
       const locations = await db.locationStore.getUserLocations(loggedInUser._id);
 
       const allLocations = await db.locationStore.getAllLocations();
       const viewData = {
+        //csrfToken: csrfToken, // Include CSRF token in the view's context data
         title: "Placemark Dashboard",
         user: loggedInUser,
         locations: locations,
@@ -45,7 +51,7 @@ export const dashboardController = {
   },
 
   owner: {
-    handler: async function (request,h) {
+    handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const allLocations = await db.locationStore.getAllLocations();
 
@@ -67,6 +73,14 @@ export const dashboardController = {
       },
     },
     handler: async function (request, h) {
+
+      // const csrfToken = request.cookieAuth.get("csrfToken");
+      // console.log(csrfToken);
+    // if (csrfToken !== request.cookieAuth.credential) {
+    //   return Boom.forbidden("Invalid CSRF token");
+    // }
+    //   console.log("token okay");
+
       const loggedInUser = request.auth.credentials;
       const city = request.payload.title;
       const imageURL = request.payload.imageURL;
@@ -87,7 +101,7 @@ export const dashboardController = {
           imageURL: imageURL,
           lat: lat,
           lng: lon,
-         weather: main,
+          weather: main,
           temp: temp,
         };
         await db.locationStore.addLocation(newLocation);

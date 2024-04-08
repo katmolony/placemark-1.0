@@ -1,5 +1,6 @@
 import { db } from "../models/db.js";
 import { UserSpec, UserCredentialsSpec } from "../models/joi-schemas.js";
+import { generateCSRFToken, setCSRFToken } from "../middleware/csrf.js";
 
 export const accountsController = {
   index: {
@@ -19,7 +20,7 @@ export const accountsController = {
     validate: {
       payload: UserSpec,
       options: { abortEarly: false },
-      failAction: function(request, h, error) {
+      failAction: function (request, h, error) {
         return h.view("signup-view", { title: "Sign up error", errors: error.details }).takeover().code(400);
       },
     },
@@ -63,6 +64,14 @@ export const accountsController = {
         request.cookieAuth.set({ id: user._id });
         return h.redirect("/owner");
       }
+
+      // Generate CSRF token
+      const csrfToken = generateCSRFToken();
+      console.log("generate csrf");
+      // Set CSRF token in session
+      request.cookieAuth.set({ user, csrfToken });
+      console.log("set csrf");
+
       request.cookieAuth.set({ id: user._id });
       return h.redirect("/dashboard");
     },

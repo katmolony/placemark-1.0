@@ -31,7 +31,7 @@ export const BusinessSpec = Joi.object()
     description: Joi.string().required().example("A lovely fake street, with fake businesses"),
     lat: Joi.number().allow("").optional().example(-3.56),
     lng: Joi.number().allow("").optional().example(35.675),
-    image: Joi.string().optional().example("/images/cloud-img.jpg"),
+    // image: Joi.string().optional().example("/images/cloud-img.jpg"),
     locationid: IdSpec,
   })
   .label("Business");

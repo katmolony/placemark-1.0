@@ -127,7 +127,6 @@ export const italy = {
 export const testBusinesss = [
   {
     title: "Mc Donalds Middle Street",
-    category: "Dining",
     address: "123 Ronald Street, New Orleans",
     category: "Dining",
     description: "Lovely food fun for families",

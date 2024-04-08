@@ -5,6 +5,8 @@ import { locationController } from "./controllers/location-controller.js";
 import { businessController } from "./controllers/business-controller.js";
 import { reviewController } from "./controllers/review-controller.js";
 
+import { generateCSRFToken, validateCSRFToken } from "./middleware/csrf.js";
+
 export const webRoutes = [
   { method: "GET", path: "/", config: accountsController.index },
   { method: "GET", path: "/signup", config: accountsController.showSignup },
