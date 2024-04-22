@@ -25,8 +25,8 @@ export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
 export const ReviewSpec = Joi.object()
   .keys({
-    content: Joi.string().required().example("Italy"),
-    rating: Joi.number().optional().example(2),
+    content: Joi.string().required().example("Great food!"),
+    rating: Joi.number().optional().example(5),
     userid: IdSpec,
     businessid: IdSpec,
     timestamp: Joi.string().regex(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/),
@@ -48,7 +48,7 @@ export const BusinessSpec = Joi.object()
     description: Joi.string().required().example("A lovely fake street, with fake businesses"),
     lat: Joi.number().allow("").optional().example(-3.56),
     lng: Joi.number().allow("").optional().example(35.675),
-    image: Joi.string().optional().example("/images/cloud-img.jpg"),
+   // image: Joi.string().optional().example("/images/cloud-img.jpg"),
     locationid: IdSpec,
     reviews: ReviewArraySpec,
   })

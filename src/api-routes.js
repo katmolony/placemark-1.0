@@ -1,6 +1,7 @@
 import { userApi } from "./api/user-api.js";
 import { locationApi } from "./api/location-api.js";
 import { businessApi } from "./api/business-api.js";
+import { reviewApi } from "./api/review-api.js";
 
 export const apiRoutes = [
   { method: "GET", path: "/api/users", config: userApi.find },
@@ -21,5 +22,11 @@ export const apiRoutes = [
   { method: "POST", path: "/api/locations/{id}/businesss", config: businessApi.create },
   { method: "DELETE", path: "/api/businesss", config: businessApi.deleteAll },
   { method: "DELETE", path: "/api/businesss/{id}", config: businessApi.deleteOne },
+
+  { method: "GET", path: "/api/reviews", config: reviewApi.find },
+  { method: "GET", path: "/api/reviews/{id}", config: reviewApi.findOne },
+  { method: "POST", path: "/api/locations/{locationId}/businesss/{id}/reviews", config: reviewApi.create },
+  { method: "DELETE", path: "/api/reviews", config: reviewApi.deleteAll },
+  { method: "DELETE", path: "/api/reviews/{id}", config: reviewApi.deleteOne },
 
 ];

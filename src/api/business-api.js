@@ -50,9 +50,10 @@ export const businessApi = {
     },
     async handler(request, h) {
       try {
-        const business = await db.businessStore.addBusiness(request.params.id, request.payload);
-        if (business) {
-          return h.response(business).code(201);
+        const business = request.payload;
+        const newBusiness = await db.businessStore.addBusiness(request.params.id, business);
+        if (newBusiness) {
+          return h.response(newBusiness).code(201);
         }
         return Boom.badImplementation("Error creating business");
       } catch (err) {

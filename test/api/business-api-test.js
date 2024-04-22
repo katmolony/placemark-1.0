@@ -7,7 +7,7 @@ import { maggie, greece, maggieCredentials, testLocations, testBusinesss, mcdona
 
 suite("Business API tests", () => {
   let user = null;
-  let locationList = null; //could be wrong locationList
+  let newLocation = null; 
 
   setup(async () => {
     placemarkService.clearAuth();
@@ -19,20 +19,20 @@ suite("Business API tests", () => {
     user = await placemarkService.createUser(maggie);
     await placemarkService.authenticate(maggieCredentials);
     greece.userid = user._id;
-    locationList = await placemarkService.createLocation(greece);
+    newLocation = await placemarkService.createLocation(greece);
   });
 
   teardown(async () => {});
 
   test("create business", async () => {
-    const returnedBusiness = await placemarkService.createBusiness(locationList._id, mcdonalds);
+    const returnedBusiness = await placemarkService.createBusiness(newLocation._id, mcdonalds);
     assertSubset(mcdonalds, returnedBusiness);
   });
 
   test("create Multiple businesss", async () => {
     for (let i = 0; i < testBusinesss.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await placemarkService.createBusiness(locationList._id, testBusinesss[i]);
+      await placemarkService.createBusiness(newLocation._id, testBusinesss[i]);
     }
     const returnedBusinesss = await placemarkService.getAllBusinesss();
     assert.equal(returnedBusinesss.length, testBusinesss.length);
@@ -46,7 +46,7 @@ suite("Business API tests", () => {
   test("Delete BusinessApi", async () => {
     for (let i = 0; i < testBusinesss.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await placemarkService.createBusiness(locationList._id, testBusinesss[i]);
+      await placemarkService.createBusiness(newLocation._id, testBusinesss[i]);
     }
     let returnedBusinesss = await placemarkService.getAllBusinesss();
     assert.equal(returnedBusinesss.length, testBusinesss.length);
@@ -61,9 +61,9 @@ suite("Business API tests", () => {
   test("denormalised location", async () => {
     for (let i = 0; i < testBusinesss.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await placemarkService.createBusiness(locationList._id, testBusinesss[i]);
+      await placemarkService.createBusiness(newLocation._id, testBusinesss[i]);
     }
-    const returnedLocation = await placemarkService.getLocation(locationList._id);
+    const returnedLocation = await placemarkService.getLocation(newLocation._id);
     assert.equal(returnedLocation.businesss.length, testBusinesss.length);
     for (let i = 0; i < testBusinesss.length; i += 1) {
       assertSubset(testBusinesss[i], returnedLocation.businesss[i]);

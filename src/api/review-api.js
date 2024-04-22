@@ -1,10 +1,9 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
-//import { IdSpec, BusinessSpec, BusinessSpecPlus, BusinessArraySpec } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 import { IdSpec, ReviewSpec, ReviewSpecPlus, ReviewArraySpec } from "../models/joi-schemas.js";
 
-export const businessApi = {
+export const reviewApi = {
   find: {
     auth: {
       strategy: "jwt"
@@ -51,9 +50,10 @@ export const businessApi = {
     },
     async handler(request, h) {
       try {
-        const review = await db.reviewStore.addReview(request.params.id, request.payload);
-        if (review) {
-          return h.response(review).code(201);
+        const review = request.payload;
+        const newReview = await db.reviewStore.addReview(request.params.id, review);
+        if (newReview) {
+          return h.response(newReview).code(201);
         }
         return Boom.badImplementation("Error creating review");
       } catch (err) {

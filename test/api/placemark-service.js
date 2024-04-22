@@ -75,6 +75,32 @@ export const placemarkService = {
     return res.data;
   },
 
+  async getAllReviews() {
+    const res = await axios.get(`${this.placemarkUrl}/api/reviews`);
+    return res.data;
+  },
+
+  async createReview(locationId, businessId, review) {
+    // might have to change to include location
+    const res = await axios.post(`${this.placemarkUrl}/api/locations/${locationId}/businesss/${businessId}/reviews`, review);
+    return res.data;
+  },
+
+  async deleteAllReviews() {
+    const response = await axios.delete(`${this.placemarkUrl}/api/reviews`);
+    return response.data;
+  },
+
+  async getReview(id) {
+    const res = await axios.get(`${this.placemarkUrl}/api/reviews/${id}`);
+    return res.data;
+  },
+
+  async deleteReview(id) {
+    const res = await axios.delete(`${this.placemarkUrl}/api/reviews/${id}`);
+    return res.data;
+  },
+
   async authenticate(user) {
     const response = await axios.post(`${this.placemarkUrl}/api/users/authenticate`, user);
     axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
