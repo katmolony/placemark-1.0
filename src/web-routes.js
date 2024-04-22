@@ -4,6 +4,7 @@ import { aboutController } from "./controllers/about-controller.js";
 import { locationController } from "./controllers/location-controller.js";
 import { businessController } from "./controllers/business-controller.js";
 import { reviewController } from "./controllers/review-controller.js";
+import os from "os";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: accountsController.index },
@@ -39,4 +40,13 @@ export const webRoutes = [
   // Reviews
   // { method: "GET", path: "/business/(businessid}/review/{id}", config: reviewController.index },
   { method: "POST", path: "/location/{locationid}/business/{businessid}/addreview", config: businessController.addReview },
+
+  {
+    method: "GET",
+    path: "/testlb",
+    handler: function (request, h) {
+      return "Server: " + os.hostname();
+    },
+    config: { auth: false },
+  },
 ];
